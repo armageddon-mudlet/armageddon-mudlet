@@ -1,4 +1,4 @@
-![Armageddon on Mudlet](https://vgy.me/mnNUi3.gif)
+![Armageddon on Mudlet](https://vgy.me/j4eF3N.gif)
 
 # Table of Contents
 
@@ -11,13 +11,13 @@
 Paste this one-liner into Mudlet to download and install prompt alone:
 
 ```
-lua function d(a,b)if not b:find("arm_prompt",1,true)then return end installPackage(b)os.remove(b)cecho("<lime_green>Package installed!\n")end registerAnonymousEventHandler("sysDownloadDone","d")downloadFile(getMudletHomeDir().."/arm_prompt.zip","https://github.com/armageddon-mudlet/armageddon-mudlet/releases/download/v2.0/arm_prompt.zip")
+lua function d(a,b)if not b:find("arm_prompt",1,true)then return end installPackage(b)os.remove(b)cecho("<lime_green>Package installed!\n")end registerAnonymousEventHandler("sysDownloadDone","d")downloadFile(getMudletHomeDir().."/arm_prompt.zip","https://github.com/armageddon-mudlet/armageddon-mudlet/raw/master/arm_prompt.zip")
 ```
 
 Or this to install the complete GUI:
 
 ```
-lua function d(a,b)if not b:find("arm_gui",1,true)then return end installPackage(b)os.remove(b)cecho("<lime_green>Package installed!\n")end registerAnonymousEventHandler("sysDownloadDone","d")downloadFile(getMudletHomeDir().."/arm_gui.zip","https://github.com/armageddon-mudlet/armageddon-mudlet/releases/download/v2.0/arm_gui.zip")
+lua function d(a,b)if not b:find("arm_gui",1,true)then return end installPackage(b)os.remove(b)cecho("<lime_green>Package installed!\n")end registerAnonymousEventHandler("sysDownloadDone","d")downloadFile(getMudletHomeDir().."/arm_gui.zip","https://github.com/armageddon-mudlet/armageddon-mudlet/raw/master/arm_gui.zip")
 ```
 
 Alternatively, download one of the .zip files provided ([arm_prompt.zip](https://raw.githubusercontent.com/azuriolinist/armageddon-mudlet/staging/arm_prompt.zip) or [arm_gui.zip (with sidebar)](https://raw.githubusercontent.com/azuriolinist/armageddon-mudlet/staging/arm_gui.zip)). Open Mudlet and navigate to the Package Manager (this is also found under Toolbox > Package manager).
@@ -27,7 +27,7 @@ Press *Install* and select the downloaded .zip file.
 # Setup
 
 ## Setting the prompt
-In game, you will have to set your prompt to `%h/%H|%v/%V|%t/%T|%m/%M|%A|%w|%S|%a|%o|%d|%e|%E|%p|%P|%O|%n>`. The alias `setprompt` does this for you.
+In game, you will have to set your prompt to `%h/%H|%v/%V|%t/%T|%m/%M|%A|%w|%S|%a|%o|%d|%e|%E|%p|%P|%O|%n|%c>`. The alias `setprompt` does this for you.
 
 ## Setting the background color
 Because Mudlet does not (AFAIK) support setting the background color through a script, you will have to set it yourself through the preferences.
