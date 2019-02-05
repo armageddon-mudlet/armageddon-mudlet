@@ -1,4 +1,4 @@
-![Armageddon on Mudlet](https://vgy.me/mnNUi3.gif)
+![Armageddon on Mudlet](https://vgy.me/j4eF3N.gif)
 
 # Table of Contents
 
