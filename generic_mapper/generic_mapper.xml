@@ -3113,8 +3113,7 @@ map.setConfigs("map_window",340,'x')
 map.setConfigs("map_window",10,'y')
 map.setConfigs("map_window",330,'w')
 map.setConfigs("map_window",-131,'h')
-map.setConfigs("map_window",'right','origin')
-map.setConfigs("download_path", "")</script>
+map.setConfigs("map_window",'right','origin')</script>
 				<eventHandlerList />
 			</Script>
 			<Script isActive="yes" isFolder="no">
