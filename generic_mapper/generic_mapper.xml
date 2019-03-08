@@ -3107,19 +3107,19 @@ registerAnonymousEventHandler("onNewRoom", "map.eventHandler")
 registerAnonymousEventHandler("onNewLine", "map.eventHandler")
 registerAnonymousEventHandler("mapOpenEvent", "map.eventHandler")
 registerAnonymousEventHandler("mapStop", "map.eventHandler")
-registerAnonymousEventHandler("onPrompt", "map.eventHandler")
-
-map.setConfigs("map_window",340,'x')
-map.setConfigs("map_window",10,'y')
-map.setConfigs("map_window",330,'w')
-map.setConfigs("map_window",-131,'h')
-map.setConfigs("map_window",'right','origin')</script>
+registerAnonymousEventHandler("onPrompt", "map.eventHandler")</script>
 				<eventHandlerList />
 			</Script>
 			<Script isActive="yes" isFolder="no">
 				<name>mapper_display</name>
 				<packageName></packageName>
 				<script>setBorderRight(350)
+
+map.setConfigs("map_window",340,'x')
+map.setConfigs("map_window",10,'y')
+map.setConfigs("map_window",330,'w')
+map.setConfigs("map_window",-131,'h')
+map.setConfigs("map_window",'right','origin')
 
 mapContainer = Geyser.Label:new({
   	name = "mapContainer",
