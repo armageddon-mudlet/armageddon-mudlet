@@ -1,4 +1,4 @@
-![Armageddon on Mudlet](https://vgy.me/r2ujho.gif)
+![Armageddon on Mudlet](https://vgy.me/YsNONT.gif)
 
 # Table of Contents
 
@@ -8,36 +8,43 @@
 
 # Installation
 
-Paste this one-liner into Mudlet to download and install prompt alone:
+Before you continue, uninstall any existing version of the following scripts below. You can do this by navigating to the Package Manager (which can also be found under Toolbox > Package Manager).
+
+Paste this one-liner into Mudlet to download and install the prompt alone:
 
 ```
-lua function d(a,b)if not b:find("arm_prompt",1,true)then return end installPackage(b)os.remove(b)cecho("<lime_green>Package installed!\n")end registerAnonymousEventHandler("sysDownloadDone","d")downloadFile(getMudletHomeDir().."/arm_prompt.zip","https://github.com/armageddon-mudlet/armageddon-mudlet/raw/master/arm_prompt.zip")
+lua function d(a,b)if not b:find("arm_prompt",1,true)then return end installPackage(b)os.remove(b)cecho("<lime_green>Package installed!\n")end registerAnonymousEventHandler("sysDownloadDone","d")downloadFile(getMudletHomeDir().."/arm_prompt.zip","https://github.com/armageddon-mudlet/armageddon-mudlet/raw/master/arm_prompt/arm_prompt.zip")
 ```
 
-Or this to install the complete GUI:
+Or this to install the complete GUI (with the equipment and inventory sidebar):
 
 ```
-lua function d(a,b)if not b:find("arm_gui",1,true)then return end installPackage(b)os.remove(b)cecho("<lime_green>Package installed!\n")end registerAnonymousEventHandler("sysDownloadDone","d")downloadFile(getMudletHomeDir().."/arm_gui.zip","https://github.com/armageddon-mudlet/armageddon-mudlet/raw/master/arm_gui.zip")
+lua function d(a,b)if not b:find("arm_gui",1,true)then return end installPackage(b)os.remove(b)cecho("<lime_green>Package installed!\n")end registerAnonymousEventHandler("sysDownloadDone","d")downloadFile(getMudletHomeDir().."/arm_gui.zip","https://github.com/armageddon-mudlet/armageddon-mudlet/raw/master/arm_gui/arm_gui.zip")
 ```
 
-Alternatively, download one of the .zip files provided ([arm_prompt.zip](https://raw.githubusercontent.com/azuriolinist/armageddon-mudlet/staging/arm_prompt.zip) or [arm_gui.zip (with sidebar)](https://raw.githubusercontent.com/azuriolinist/armageddon-mudlet/staging/arm_gui.zip)). Open Mudlet and navigate to the Package Manager (this is also found under Toolbox > Package manager).
+Install the mapping script:
 
-Press *Install* and select the downloaded .zip file.
+```
+lua function d(a,b)if not b:find("generic_mapper",1,true)then return end installPackage(b)os.remove(b)cecho("<lime_green>Package installed!\n")end registerAnonymousEventHandler("sysDownloadDone","d")downloadFile(getMudletHomeDir().."/generic_mapper.xml","https://github.com/armageddon-mudlet/armageddon-mudlet/raw/master/generic_mapper/generic_mapper.xml")
+```
+
+Alternatively, download one of the .zip files provided:
+
+ - [arm_prompt.zip](https://github.com/armageddon-mudlet/armageddon-mudlet/raw/master/arm_prompt/arm_prompt.zip)
+ - [arm_gui.zip (with sidebar)](https://github.com/armageddon-mudlet/armageddon-mudlet/raw/master/arm_gui/arm_gui.zip).
+ - [generic_mapper.xml](https://github.com/armageddon-mudlet/armageddon-mudlet/raw/master/generic_mapper/generic_mapper.xml)
+ 
+Open Mudlet and navigate to the Package Manager (this is also found under Toolbox > Package manager). Press *Install* and select the downloaded .zip file.
 
 # Setup
 
 ## Setting the prompt
-In game, you will have to set your prompt to `%h/%H|%v/%V|%t/%T|%m/%M|%A|%w|%S|%a|%o|%d|%e|%E|%p|%P|%O|%n|%c>`. The alias `setprompt` does this for you.
-
-## Setting the background color
-Because Mudlet does not (AFAIK) support setting the background color through a script, you will have to set it yourself through the preferences.
-
-In the *Profile preferences* window, open the tab *Color view* and change the background colors (*Background*, *Command line background*, and *Command background*) to `#16130F`.
-
-Alternatively, you can keep the background black. Modify `arm_prompt.xml` or `arm_gui.xml` within the zip file and change the line `setBorderColor(22,19,15)` to `setBorderColor(0,0,0)`.
+When in-game, type `setprompt` to set up your prompt.
 
 # Mapping
 To begin mapping, enter `start mapping <area name>`. Also make sure that you have `brief exits off`. Room exits should look like `[N, E, S, W]`, rather than `[NESW]`.
+
+For more information, type `map help`.
 
 ## Important Commands (Aliases) for Proper Mapping
 
