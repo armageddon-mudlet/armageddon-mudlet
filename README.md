@@ -31,7 +31,7 @@ lua function d(a,b)if not b:find("generic_mapper",1,true)then return end install
 Alternatively, download one of the .zip files provided:
 
  - [arm_prompt.zip](https://github.com/armageddon-mudlet/armageddon-mudlet/raw/master/arm_prompt/arm_prompt.zip)
- - [arm_gui.zip (with sidebar)](https://github.com/armageddon-mudlet/armageddon-mudlet/raw/master/arm_gui/arm_gui.zip).
+ - [arm_gui.zip (with sidebar)](https://github.com/armageddon-mudlet/armageddon-mudlet/raw/master/arm_gui/arm_gui.zip)
  - [generic_mapper.xml](https://github.com/armageddon-mudlet/armageddon-mudlet/raw/master/generic_mapper/generic_mapper.xml)
  
 Open Mudlet and navigate to the Package Manager (this is also found under Toolbox > Package manager). Press *Install* and select the downloaded .zip file.
@@ -39,12 +39,20 @@ Open Mudlet and navigate to the Package Manager (this is also found under Toolbo
 # Setup
 
 ## Setting the prompt
-When in-game, type `setprompt` to set up your prompt.
+When in-game, type `setprompt` to set up your prompt. I'd recommend setting `brief prompt off`, so that the prompt is always kept updated.
 
 # Mapping
 To begin mapping, enter `start mapping <area name>`. Also make sure that you have `brief exits off`. Room exits should look like `[N, E, S, W]`, rather than `[NESW]`.
 
 For more information, type `map help`.
+
+> **Note:** When mapping enterable rooms, such as a 'stall' you must enter, you can make use of the commands `add portal <entry command>` and `set exit -p <entry command> <destination room ID>` to map out the `leave` exit. `enter` exits should be automatically mapped out when inputted as `enter <object>`.
+>
+> For more information, type `map help add portal` and `map help set exit` in Mudlet.
+
+> **Note:** From my experience, having a color set for `fg_room_name` and `fg_room_exits` can result in the exits frequently being broken into a new line from the room name. If this happens, try resetting these two settings to none.
+>
+> If you have an existing color configuration, you can do this by first typing `change color export`. Copy all settings besides `fg_room_name` and `fg_room_exits`. Now type `change color none` to reset all settings to no colors, and paste in the settings you copied earlier.
 
 ## Important Commands (Aliases) for Proper Mapping
 
