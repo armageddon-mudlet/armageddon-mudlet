@@ -1,4 +1,4 @@
-![Armageddon on Mudlet](https://vgy.me/YsNONT.gif)
+![Armageddon on Mudlet](https://i.vgy.me/yd6fwg.gif)
 
 # Table of Contents
 
@@ -13,22 +13,22 @@ Before you continue, uninstall any existing version of the following scripts bel
 Paste this one-liner into Mudlet to download and install the prompt alone:
 
 ```
-lua function d(a,b)if not b:find("arm_prompt",1,true)then return end installPackage(b)os.remove(b)cecho("<lime_green>Package installed!\n")end registerAnonymousEventHandler("sysDownloadDone","d")downloadFile(getMudletHomeDir().."/arm_prompt.zip","https://github.com/armageddon-mudlet/armageddon-mudlet/raw/master/arm_prompt/arm_prompt.zip")
+lua function d(a,b)if not b:find("arm_prompt",1,true)then return end uninstallPackage("arm_prompt")installPackage(b)os.remove(b)cecho("<lime_green>Package installed!\n")end registerAnonymousEventHandler("sysDownloadDone","d")downloadFile(getMudletHomeDir().."/arm_prompt.zip","https://github.com/armageddon-mudlet/armageddon-mudlet/raw/master/arm_prompt/arm_prompt.zip")
 ```
 
 Or this to install the complete GUI (with the equipment and inventory sidebar):
 
 ```
-lua function d(a,b)if not b:find("arm_gui",1,true)then return end installPackage(b)os.remove(b)cecho("<lime_green>Package installed!\n")end registerAnonymousEventHandler("sysDownloadDone","d")downloadFile(getMudletHomeDir().."/arm_gui.zip","https://github.com/armageddon-mudlet/armageddon-mudlet/raw/master/arm_gui/arm_gui.zip")
+lua function d(a,b)if not b:find("arm_gui",1,true)then return end uninstallPackage("arm_gui")installPackage(b)os.remove(b)cecho("<lime_green>Package installed!\n")end registerAnonymousEventHandler("sysDownloadDone","d")downloadFile(getMudletHomeDir().."/arm_gui.zip","https://github.com/armageddon-mudlet/armageddon-mudlet/raw/master/arm_gui/arm_gui.zip")
 ```
 
-Install the mapping script:
+Install the mapping script (optional):
 
 ```
-lua function d(a,b)if not b:find("generic_mapper",1,true)then return end installPackage(b)os.remove(b)cecho("<lime_green>Package installed!\n")end registerAnonymousEventHandler("sysDownloadDone","d")downloadFile(getMudletHomeDir().."/generic_mapper.xml","https://github.com/armageddon-mudlet/armageddon-mudlet/raw/master/generic_mapper/generic_mapper.xml")
+lua function d(a,b)if not b:find("generic_mapper",1,true)then return end uninstallPackage("generic_mapper")installPackage(b)os.remove(b)cecho("<lime_green>Package installed!\n")end registerAnonymousEventHandler("sysDownloadDone","d")downloadFile(getMudletHomeDir().."/generic_mapper.xml","https://github.com/armageddon-mudlet/armageddon-mudlet/raw/master/generic_mapper/generic_mapper.xml")
 ```
 
-Alternatively, download one of the .zip files provided:
+Alternatively, download the .zip file(s) of the packages you'd prefer:
 
  - [arm_prompt.zip](https://github.com/armageddon-mudlet/armageddon-mudlet/raw/master/arm_prompt/arm_prompt.zip)
  - [arm_gui.zip (with sidebar)](https://github.com/armageddon-mudlet/armageddon-mudlet/raw/master/arm_gui/arm_gui.zip)
@@ -46,7 +46,7 @@ To begin mapping, enter `start mapping <area name>`. Also make sure that you hav
 
 For more information, type `map help`.
 
-> **Note:** When mapping enterable rooms, such as a 'stall' you must enter, you can make use of the commands `add portal <entry command>` and `set exit -p <entry command> <destination room ID>` to map out the `leave` exit. `enter` exits should be automatically mapped out when inputted as `enter <object>`.
+> **Note:** When mapping enterable rooms, such as an enterable 'stall', you can make use of the commands `add portal -f enter stall` and `set exit -p leave <destination room ID>` to map out the `leave` exit. `enter` exits should be automatically mapped out when inputted as `enter <object>`.
 >
 > For more information, type `map help add portal` and `map help set exit` in Mudlet.
 
