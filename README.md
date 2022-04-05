@@ -13,26 +13,26 @@ Before you continue, uninstall any existing version of the following scripts bel
 Paste this one-liner into Mudlet to download and install the prompt alone:
 
 ```
-lua function d(a,b)if not b:find("arm_prompt",1,true)then return end uninstallPackage("arm_prompt")installPackage(b)os.remove(b)cecho("<lime_green>Package installed!\n")end registerAnonymousEventHandler("sysDownloadDone","d",true)downloadFile(getMudletHomeDir().."/arm_prompt.zip","https://github.com/armageddon-mudlet/armageddon-mudlet/raw/master/arm_prompt/arm_prompt.zip")
+lua function d(a,b)if not b:find("arm_prompt",1,true)then return end uninstallPackage("arm_prompt")installPackage(b)os.remove(b)cecho("<lime_green>Package installed!\n")end registerAnonymousEventHandler("sysDownloadDone","d",true)downloadFile(getMudletHomeDir().."/arm_prompt.zip","https://github.com/armageddon-mudlet/armageddon-mudlet/raw/master/released/arm_prompt/arm_prompt.zip")
 ```
 
 Or this to install the complete GUI (with the equipment and inventory sidebar):
 
 ```
-lua function d(a,b)if not b:find("arm_gui",1,true)then return end uninstallPackage("arm_gui")installPackage(b)os.remove(b)cecho("<lime_green>Package installed!\n")end registerAnonymousEventHandler("sysDownloadDone","d",true)downloadFile(getMudletHomeDir().."/arm_gui.zip","https://github.com/armageddon-mudlet/armageddon-mudlet/raw/master/arm_gui/arm_gui.zip")
+lua function d(a,b)if not b:find("arm_gui",1,true)then return end uninstallPackage("arm_gui")installPackage(b)os.remove(b)cecho("<lime_green>Package installed!\n")end registerAnonymousEventHandler("sysDownloadDone","d",true)downloadFile(getMudletHomeDir().."/arm_gui.zip","https://github.com/armageddon-mudlet/armageddon-mudlet/raw/master/released/arm_gui/arm_gui.zip")
 ```
 
 Install the mapping script (optional):
 
 ```
-lua function d(a,b)if not b:find("generic_mapper",1,true)then return end uninstallPackage("generic_mapper")installPackage(b)os.remove(b)cecho("<lime_green>Package installed!\n")end registerAnonymousEventHandler("sysDownloadDone","d",true)downloadFile(getMudletHomeDir().."/generic_mapper.zip","https://github.com/armageddon-mudlet/armageddon-mudlet/raw/master/generic_mapper/generic_mapper.zip")
+lua function d(a,b)if not b:find("generic_mapper",1,true)then return end uninstallPackage("generic_mapper")installPackage(b)os.remove(b)cecho("<lime_green>Package installed!\n")end registerAnonymousEventHandler("sysDownloadDone","d",true)downloadFile(getMudletHomeDir().."/generic_mapper.zip","https://github.com/armageddon-mudlet/armageddon-mudlet/raw/master/released/generic_mapper/generic_mapper.zip")
 ```
 
 Alternatively, download the .zip file(s) of the packages you'd prefer:
 
- - [arm_prompt.zip](https://github.com/armageddon-mudlet/armageddon-mudlet/raw/master/arm_prompt/arm_prompt.zip)
- - [arm_gui.zip (with sidebar)](https://github.com/armageddon-mudlet/armageddon-mudlet/raw/master/arm_gui/arm_gui.zip)
- - [generic_mapper.zip](https://github.com/armageddon-mudlet/armageddon-mudlet/raw/master/generic_mapper/generic_mapper.zip)
+ - [arm_prompt.zip](https://github.com/armageddon-mudlet/armageddon-mudlet/raw/master/released/arm_prompt/arm_prompt.zip)
+ - [arm_gui.zip (with sidebar)](https://github.com/armageddon-mudlet/armageddon-mudlet/raw/master/released/arm_gui/arm_gui.zip)
+ - [generic_mapper.zip](https://github.com/armageddon-mudlet/armageddon-mudlet/raw/master/released/generic_mapper/generic_mapper.zip)
  
 Open Mudlet and navigate to the Package Manager (this is also found under Toolbox > Package manager). Press *Install* and select the downloaded .zip file.
 
