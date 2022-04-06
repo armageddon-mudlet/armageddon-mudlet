@@ -1,0 +1,2748 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE MudletPackage>
+<MudletPackage version="1.001">
+	<TriggerPackage>
+		<Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+			<name>catchprompt</name>
+			<script>prompt_HP = tonumber(matches[2])
+prompt_maxHP = tonumber(matches[3])
+prompt_MV = tonumber(matches[4])
+prompt_maxMV = tonumber(matches[5])
+prompt_ST = tonumber(matches[6])
+prompt_maxST = tonumber(matches[7])
+prompt_MA = tonumber(matches[8])
+prompt_maxMA = tonumber(matches[9])
+prompt_FO = tonumber(matches[10])
+prompt_maxFO = tonumber(matches[11])
+prompt_armed = matches[12]
+prompt_speed = matches[13]
+prompt_position = matches[14]
+prompt_accent = matches[15]
+prompt_language = matches[16]
+prompt_day = matches[17]
+prompt_time = matches[18]
+prompt_weight = matches[19]
+effects = {}
+if (string.len(matches[20]) &gt; 0) then
+	prompt_scan = matches[20]
+else
+	prompt_scan = nil
+end
+if (string.len(matches[21]) &gt; 0) then
+	prompt_listen = matches[21]
+else
+	prompt_listen = nil
+end
+prompt_mood = matches[22]
+prompt_name = matches[23]
+prompt_hunger = matches[24]
+prompt_thirst = matches[25]
+prompt_stance = matches[26]
+
+setHP(prompt_HP, prompt_maxHP)
+setMV(prompt_MV, prompt_maxMV)
+setST(prompt_ST, prompt_maxST)
+setMA(prompt_MA, prompt_maxMA)
+setFO(prompt_FO, prompt_maxFO)
+
+setArmed(prompt_armed)
+setRiposte(prompt_stance)
+setSpeed(prompt_speed)
+setPosition(prompt_position)
+setSpeech(prompt_accent, prompt_language)
+setDay(prompt_day)
+setTime(prompt_time)
+setWeight(prompt_weight)
+
+setScan(prompt_scan)
+setListen(prompt_listen)
+setHunger(prompt_hunger)
+setThirst(prompt_thirst)
+setMood(prompt_mood)
+setName(prompt_name)
+
+if not (matches[27] == "") then
+  	selectString(line, 1)
+  	replace(matches[27], true)
+else
+		deleteLine()
+end
+
+map.character = prompt_name</script>
+			<triggerType>0</triggerType>
+			<conditonLineDelta>0</conditonLineDelta>
+			<mStayOpen>0</mStayOpen>
+			<mCommand></mCommand>
+			<packageName></packageName>
+			<mFgColor>#000000</mFgColor>
+			<mBgColor>#000000</mBgColor>
+			<mSoundFile></mSoundFile>
+			<colorTriggerFgColor>#000000</colorTriggerFgColor>
+			<colorTriggerBgColor>#000000</colorTriggerBgColor>
+			<regexCodeList>
+				<string>^(\-?\d+)\/(\-?\d+)\|(\-?\d+)\/(\-?\d+)\|(\-?\d+)\/(\-?\d+)\|(\-?\d+)\/(\-?\d+)\|(\-?\d+)\/(\-?\d+)\|(\w+)\|(\w+)\|(.+?)\|(\w+)\|(\w+)\|(\w+)\|(.+?)\|(.+?)\|(.*?)\|(.*?)\|(.*?)\|(.*?)\|(.+?)\|(.+?)\|(.+?)&gt;(.*)$</string>
+			</regexCodeList>
+			<regexCodePropertyList>
+				<integer>1</integer>
+			</regexCodePropertyList>
+		</Trigger>
+		<TriggerGroup isActive="yes" isFolder="yes" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+			<name>sidemenu</name>
+			<script></script>
+			<triggerType>0</triggerType>
+			<conditonLineDelta>0</conditonLineDelta>
+			<mStayOpen>0</mStayOpen>
+			<mCommand></mCommand>
+			<packageName></packageName>
+			<mFgColor>#000000</mFgColor>
+			<mBgColor>#000000</mBgColor>
+			<mSoundFile></mSoundFile>
+			<colorTriggerFgColor>#000000</colorTriggerFgColor>
+			<colorTriggerBgColor>#000000</colorTriggerBgColor>
+			<regexCodeList />
+			<regexCodePropertyList />
+			<Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+				<name>gameEntry</name>
+				<script>send("i", false)
+enableTimer(tempTimer(3, [[
+	equipmentDeleteAll = true
+	send("eq", false)]]))
+
+enableTimer("refreshInventory")
+enableTimer("refreshEquipment")</script>
+				<triggerType>0</triggerType>
+				<conditonLineDelta>0</conditonLineDelta>
+				<mStayOpen>0</mStayOpen>
+				<mCommand></mCommand>
+				<packageName></packageName>
+				<mFgColor>#000000</mFgColor>
+				<mBgColor>#000000</mBgColor>
+				<mSoundFile></mSoundFile>
+				<colorTriggerFgColor>#000000</colorTriggerFgColor>
+				<colorTriggerBgColor>#000000</colorTriggerBgColor>
+				<regexCodeList>
+					<string>^Welcome to the world of Zalanthas.$</string>
+					<string>^Reconnected.$</string>
+				</regexCodeList>
+				<regexCodePropertyList>
+					<integer>1</integer>
+					<integer>1</integer>
+				</regexCodePropertyList>
+			</Trigger>
+			<Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+				<name>gameExit</name>
+				<script>onGameExit()</script>
+				<triggerType>0</triggerType>
+				<conditonLineDelta>0</conditonLineDelta>
+				<mStayOpen>0</mStayOpen>
+				<mCommand></mCommand>
+				<packageName></packageName>
+				<mFgColor>#000000</mFgColor>
+				<mBgColor>#000000</mBgColor>
+				<mSoundFile></mSoundFile>
+				<colorTriggerFgColor>#000000</colorTriggerFgColor>
+				<colorTriggerBgColor>#000000</colorTriggerBgColor>
+				<regexCodeList>
+					<string>^Come back soon!$</string>
+				</regexCodeList>
+				<regexCodePropertyList>
+					<integer>1</integer>
+				</regexCodePropertyList>
+			</Trigger>
+			<TriggerGroup isActive="yes" isFolder="yes" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+				<name>inventory</name>
+				<script></script>
+				<triggerType>0</triggerType>
+				<conditonLineDelta>0</conditonLineDelta>
+				<mStayOpen>0</mStayOpen>
+				<mCommand></mCommand>
+				<packageName></packageName>
+				<mFgColor>#000000</mFgColor>
+				<mBgColor>#000000</mBgColor>
+				<mSoundFile></mSoundFile>
+				<colorTriggerFgColor>#000000</colorTriggerFgColor>
+				<colorTriggerBgColor>#000000</colorTriggerBgColor>
+				<regexCodeList />
+				<regexCodePropertyList />
+				<Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+					<name>inventory_begin</name>
+					<script>inventory = {}
+enableTrigger("inventory_capture")
+enableTrigger("inventory_end")
+promptCaught = true</script>
+					<triggerType>0</triggerType>
+					<conditonLineDelta>41</conditonLineDelta>
+					<mStayOpen>1</mStayOpen>
+					<mCommand></mCommand>
+					<packageName></packageName>
+					<mFgColor>#000000</mFgColor>
+					<mBgColor>#000000</mBgColor>
+					<mSoundFile></mSoundFile>
+					<colorTriggerFgColor>#000000</colorTriggerFgColor>
+					<colorTriggerBgColor>#000000</colorTriggerBgColor>
+					<regexCodeList>
+						<string>^You are carrying:$</string>
+					</regexCodeList>
+					<regexCodePropertyList>
+						<integer>1</integer>
+					</regexCodePropertyList>
+					<Trigger isActive="no" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+						<name>inventory_end</name>
+						<script>if #inventory &gt; 0 then
+  setTriggerStayOpen("inventory_begin", 0)
+  disableTrigger("inventory_capture")
+  disableTrigger("inventory_end")
+  deleteLine()
+
+  populateInventory(inventory)
+else
+	setTriggerStayOpen("inventory_begin", 1)
+end</script>
+						<triggerType>0</triggerType>
+						<conditonLineDelta>0</conditonLineDelta>
+						<mStayOpen>0</mStayOpen>
+						<mCommand></mCommand>
+						<packageName></packageName>
+						<mFgColor>#000000</mFgColor>
+						<mBgColor>#000000</mBgColor>
+						<mSoundFile></mSoundFile>
+						<colorTriggerFgColor>#000000</colorTriggerFgColor>
+						<colorTriggerBgColor>#000000</colorTriggerBgColor>
+						<regexCodeList>
+							<string>^$</string>
+						</regexCodeList>
+						<regexCodePropertyList>
+							<integer>1</integer>
+						</regexCodePropertyList>
+					</Trigger>
+					<Trigger isActive="no" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="yes" isColorTriggerFg="no" isColorTriggerBg="no">
+						<name>inventory_capture</name>
+						<script>if string.len(line) &gt; 0 and line ~= "You are carrying:" then
+  table.insert(inventory, line)
+end
+setTriggerStayOpen("inventory_begin", 1)
+
+selectCurrentLine()
+deleteLine()</script>
+						<triggerType>0</triggerType>
+						<conditonLineDelta>1</conditonLineDelta>
+						<mStayOpen>0</mStayOpen>
+						<mCommand></mCommand>
+						<packageName></packageName>
+						<mFgColor>#000000</mFgColor>
+						<mBgColor>#000000</mBgColor>
+						<mSoundFile></mSoundFile>
+						<colorTriggerFgColor>#57826d</colorTriggerFgColor>
+						<colorTriggerBgColor>#000000</colorTriggerBgColor>
+						<regexCodeList>
+							<string>^.*$</string>
+						</regexCodeList>
+						<regexCodePropertyList>
+							<integer>1</integer>
+						</regexCodePropertyList>
+					</Trigger>
+				</Trigger>
+			</TriggerGroup>
+			<TriggerGroup isActive="yes" isFolder="yes" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+				<name>equipment</name>
+				<script></script>
+				<triggerType>0</triggerType>
+				<conditonLineDelta>0</conditonLineDelta>
+				<mStayOpen>0</mStayOpen>
+				<mCommand></mCommand>
+				<packageName></packageName>
+				<mFgColor>#000000</mFgColor>
+				<mBgColor>#000000</mBgColor>
+				<mSoundFile></mSoundFile>
+				<colorTriggerFgColor>#000000</colorTriggerFgColor>
+				<colorTriggerBgColor>#000000</colorTriggerBgColor>
+				<regexCodeList />
+				<regexCodePropertyList />
+				<Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+					<name>equipment_begin</name>
+					<script>equipment = {}
+enableTrigger("equipment_capture")
+enableTrigger("equipment_end")
+promptCaught = true
+
+if equipmentDeleteAll then
+	selectCurrentLine()
+	deleteLine()
+end</script>
+					<triggerType>0</triggerType>
+					<conditonLineDelta>0</conditonLineDelta>
+					<mStayOpen>1</mStayOpen>
+					<mCommand></mCommand>
+					<packageName></packageName>
+					<mFgColor>#000000</mFgColor>
+					<mBgColor>#000000</mBgColor>
+					<mSoundFile></mSoundFile>
+					<colorTriggerFgColor>#000000</colorTriggerFgColor>
+					<colorTriggerBgColor>#000000</colorTriggerBgColor>
+					<regexCodeList>
+						<string>^You are using:$</string>
+					</regexCodeList>
+					<regexCodePropertyList>
+						<integer>1</integer>
+					</regexCodePropertyList>
+					<Trigger isActive="no" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+						<name>equipment_end</name>
+						<script>if #equipment &gt; 0 then
+  populateEquipment(equipment)
+end
+
+disableTrigger("equipment_capture")
+disableTrigger("equipment_end")
+
+if equipmentDeleteAll then
+	selectCurrentLine()
+	deleteLine()
+	equipmentDeleteAll = false
+end
+
+setTriggerStayOpen("equipment_begin", 0)</script>
+						<triggerType>0</triggerType>
+						<conditonLineDelta>0</conditonLineDelta>
+						<mStayOpen>0</mStayOpen>
+						<mCommand></mCommand>
+						<packageName></packageName>
+						<mFgColor>#000000</mFgColor>
+						<mBgColor>#000000</mBgColor>
+						<mSoundFile></mSoundFile>
+						<colorTriggerFgColor>#000000</colorTriggerFgColor>
+						<colorTriggerBgColor>#000000</colorTriggerBgColor>
+						<regexCodeList>
+							<string>^$</string>
+							<string>^(\-?\d+)\/(\-?\d+)\|(\-?\d+)\/(\-?\d+)\|(\-?\d+)\/(\-?\d+)\|(\-?\d+)\/(\-?\d+)\|(\w+)\|(\w+)\|(.+?)\|(\w+)\|(\w+)\|(\w+)\|(.+?)\|(.+?)\|(.*?)\|(.*?)\|(.*?)\|(.*?)\|(.+?)\|(.+?)&gt;(.*?)$</string>
+						</regexCodeList>
+						<regexCodePropertyList>
+							<integer>1</integer>
+							<integer>1</integer>
+						</regexCodePropertyList>
+					</Trigger>
+					<Trigger isActive="no" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+						<name>equipment_capture</name>
+						<script>local item = {matches[2], matches[3]}
+table.insert(equipment, item)
+
+if equipmentDeleteAll then
+  selectCurrentLine()
+  deleteLine()
+end
+
+setTriggerStayOpen("equipment_begin", 1)</script>
+						<triggerType>0</triggerType>
+						<conditonLineDelta>0</conditonLineDelta>
+						<mStayOpen>0</mStayOpen>
+						<mCommand></mCommand>
+						<packageName></packageName>
+						<mFgColor>#000000</mFgColor>
+						<mBgColor>#000000</mBgColor>
+						<mSoundFile></mSoundFile>
+						<colorTriggerFgColor>#000000</colorTriggerFgColor>
+						<colorTriggerBgColor>#000000</colorTriggerBgColor>
+						<regexCodeList>
+							<string>^\&lt;(.+)\&gt; +(.+)$</string>
+						</regexCodeList>
+						<regexCodePropertyList>
+							<integer>1</integer>
+						</regexCodePropertyList>
+					</Trigger>
+				</Trigger>
+			</TriggerGroup>
+			<Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+				<name>textEditor</name>
+				<script>disableTimer("refreshInventory")
+disableTimer("refreshEquipment")
+
+local id = registerAnonymousEventHandler("sysDataSendRequest",
+	function(_, command)
+		if command == "~" or command == ".q" then
+			enableTimer("refreshInventory")
+			enableTimer("refreshEquipment")
+		else
+			return true
+		end
+	end, true
+)</script>
+				<triggerType>0</triggerType>
+				<conditonLineDelta>0</conditonLineDelta>
+				<mStayOpen>0</mStayOpen>
+				<mCommand></mCommand>
+				<packageName></packageName>
+				<mFgColor>#ff0000</mFgColor>
+				<mBgColor>#ffff00</mBgColor>
+				<mSoundFile></mSoundFile>
+				<colorTriggerFgColor>#000000</colorTriggerFgColor>
+				<colorTriggerBgColor>#000000</colorTriggerBgColor>
+				<regexCodeList>
+					<string>Text Editor:</string>
+				</regexCodeList>
+				<regexCodePropertyList>
+					<integer>2</integer>
+				</regexCodePropertyList>
+			</Trigger>
+		</TriggerGroup>
+	</TriggerPackage>
+	<TimerPackage>
+		<TimerGroup isActive="yes" isFolder="yes" isTempTimer="no" isOffsetTimer="no">
+			<name>sidebar</name>
+			<script></script>
+			<command></command>
+			<packageName></packageName>
+			<time>00:00:00.000</time>
+			<Timer isActive="no" isFolder="no" isTempTimer="no" isOffsetTimer="no">
+				<name>refreshInventory</name>
+				<script>doEnableInventory = false
+
+send("i", false)</script>
+				<command></command>
+				<packageName></packageName>
+				<time>00:06:00.000</time>
+			</Timer>
+			<Timer isActive="no" isFolder="no" isTempTimer="no" isOffsetTimer="no">
+				<name>refreshEquipment</name>
+				<script>doEnableEquipment = false
+equipmentDeleteAll = true
+
+send("eq", false)</script>
+				<command></command>
+				<packageName></packageName>
+				<time>00:05:00.000</time>
+			</Timer>
+		</TimerGroup>
+	</TimerPackage>
+	<AliasPackage>
+		<Alias isActive="yes" isFolder="no">
+			<name>setprompt</name>
+			<script></script>
+			<command>prompt %h/%H|%v/%V|%t/%T|%m/%M|%x/%X|%A|%w|%S|%a|%o|%d|%e|%E|%p|%P|%O|%n|%u|%U|%c&gt;</command>
+			<packageName></packageName>
+			<regex>^setprompt$</regex>
+		</Alias>
+		<Alias isActive="yes" isFolder="no">
+			<name>updatearm</name>
+			<script>arm.updateVersion()</script>
+			<command></command>
+			<packageName></packageName>
+			<regex>^updatearm$</regex>
+		</Alias>
+	</AliasPackage>
+	<ActionPackage />
+	<ScriptPackage>
+		<Script isActive="yes" isFolder="no">
+			<name>sidemenu</name>
+			<packageName></packageName>
+			<script>arm = arm or {}
+arm.version = "4.0.1"
+arm.packageName = "arm_gui"
+arm.downloadPath = "https://github.com/armageddon-mudlet/armageddon-mudlet/raw/master/released/" .. arm.packageName
+arm.assetsPath = getMudletHomeDir()..[[/]]..arm.packageName..[[/assets]]
+
+local isInventoryVisible = isInventoryVisible or true
+local isEquipmentVisible = isEquipmentVisible or true
+local isEmotingVisible = false
+
+doEnableEquipment = true
+doEnableInventory = true
+
+startingEquipment = startingEquipment or 0
+
+inventoryLabels = inventoryLabels or {}
+equipmentLabels = equipmentLabels or {}
+
+setBorderLeft(350)
+
+setStyleWithSlash = function (element, style)
+  element:setStyleSheet(style:gsub("\\","/"))
+end
+
+function initiateEquipment()
+	for i=1,30,1 do
+		if (equipmentLabels[i] == nil) then
+    		local label = Geyser.Label:new({
+    			name = "equipmentItem"..i,
+    			x = 20,
+    			y = 19 * (i - 1) + 18,
+    			width = -20,
+    			height = 20,
+    		}, equipmentContainer)
+
+    		label:setStyleSheet([[
+  			font-family: 'Fondamento', serif;
+				font-size: 5pt;
+      	qproperty-alignment: 'AlignHLeft|AlignVCenter';
+  			padding: 2px;
+				background: rgba(70, 62, 62, 0.6);
+				border: 1px solid rgb(11, 10, 8);
+				border-radius: 0px;
+    		]])
+
+				label:hide()
+
+    		table.insert(equipmentLabels, label)
+		end
+	end
+end
+
+function initiateInventory()
+	for i=1,20,1 do
+		if (inventoryLabels[i] == nil) then
+    		local label = Geyser.Label:new({
+    			name = "inventoryItem"..i,
+    			x = 20,
+    			y = 19 * (i - 1) + 18,
+    			width = -20,
+    			height = 20,
+    		}, inventoryContainer)
+
+    		label:setStyleSheet([[
+  			font-family: 'Fondamento', serif;
+				font-size: 5pt;
+      	qproperty-alignment: 'AlignHLeft|AlignVCenter';
+  			padding: 2px;
+				background: rgba(70, 62, 62, 0.6);
+				border: 1px solid rgb(11, 10, 8);
+				border-radius: 0px;
+    		]])
+
+			label:hide()
+
+    	table.insert(inventoryLabels, label)
+		end
+	end
+end
+
+function populateEquipment(equipment)
+	-- hide labels currently not in use
+	if #equipmentLabels &gt; #equipment - startingEquipment then
+    	for i=#equipment - startingEquipment + 1,#equipmentLabels,1 do
+    		equipmentLabels[i]:hide()
+    	end
+	end
+
+	-- populate container with equipment items
+	for i=1,#equipment - startingEquipment, 1 do
+		eqOffset = i + startingEquipment
+		if (equipmentLabels[i] == nil) then
+  		local label = Geyser.Label:new({
+  			name = "equipmentItem"..i,
+  			x = 20,
+  			y = 19 * (i - 1) + 18,
+  			width = -20,
+  			height = 20,
+  			message = equipment[eqOffset][2] .. " (" .. equipment[eqOffset][1] .. ")"
+  		}, equipmentContainer)
+
+  		label:setStyleSheet([[
+			font-family: 'Fondamento', serif;
+			font-size: 5pt;
+    	qproperty-alignment: 'AlignHLeft|AlignVCenter';
+			padding: 2px;
+			background: rgba(70, 62, 62, 0.6);
+			border: 1px solid rgb(11, 10, 8);
+			border-radius: 0px;
+  		]])
+
+  		table.insert(equipmentLabels, label)
+		else
+			equipmentLabels[i]:echo(equipment[eqOffset][2] .. " (" .. equipment[eqOffset][1] .. ")")
+			equipmentLabels[i]:show()
+		end
+
+	end
+
+	return equipmentLabels
+end
+
+function populateInventory(inventory)
+	-- hide labels currently not in use
+	if #inventoryLabels &gt; #inventory then
+    	for i=#inventory + 1,#inventoryLabels,1 do
+    		inventoryLabels[i]:hide()
+    	end
+	end
+
+	-- populate container with inventory items
+	for i,v in ipairs(inventory) do
+		if (inventoryLabels[i] == nil) then
+    		local label = Geyser.Label:new({
+    			name = "inventoryItem"..i,
+    			x = 20,
+    			y = 19 * (i - 1) + 18,
+    			width = -20,
+    			height = 20,
+    			message = v
+    		}, inventoryContainer)
+
+    		label:setStyleSheet([[
+  			font-family: 'Fondamento', serif;
+				font-size: 5pt;
+      	qproperty-alignment: 'AlignHLeft|AlignVCenter';
+  			padding: 2px;
+				background: rgba(70, 62, 62, 0.6);
+				border: 1px solid rgb(11, 10, 8);
+				border-radius: 0px;
+    		]])
+
+    		table.insert(inventoryLabels, label)
+		else
+			inventoryLabels[i]:echo(v)
+			inventoryLabels[i]:show()
+		end
+
+	end
+
+	return inventoryLabels
+end
+
+equipmentContainer = Geyser.Label:new({
+	name = "equipmentContainer",
+	x = "0",
+	y = "55",
+	width = "350",
+	height = "-120",
+}, main)
+
+equipmentContainer:setStyleSheet([[
+	border-radius: 3px;
+	background-opacity: 1;
+	background-color: #251D1A;
+	background-image: url(]]..getMudletHomeDir()..[[/]]..arm.packageName..[[/assets/bg.png);
+	background-position: 'bottom';
+	background-size: 'cover';
+]])
+
+equipmentTopLeftCorner = Geyser.Label:new({
+	name = "equipmentTopLeftCorner",
+	x = 0,
+	y = 0,
+	width = 20,
+	height = 20,
+}, equipmentContainer)
+
+setStyleWithSlash(equipmentTopLeftCorner, [[
+	border-image: url(]]..getMudletHomeDir()..[[/]]..arm.packageName..[[/assets/topleftcorner.png);
+]])
+
+equipmentTopRightCorner = Geyser.Label:new({
+	name = "equipmentTopRightCorner",
+	x = -20,
+	y = 0,
+	width = 20,
+	height = 20,
+}, equipmentContainer)
+
+setStyleWithSlash(equipmentTopRightCorner, [[
+	border-image: url(]]..getMudletHomeDir()..[[/]]..arm.packageName..[[/assets/toprightcorner.png);
+]])
+
+equipmentTopBorder = Geyser.Label:new({
+	name = "equipmentTopBorder",
+	x = 20,
+	y = 0,
+	width = -20,
+	height = 9,
+}, equipmentContainer)
+
+setStyleWithSlash(equipmentTopBorder, [[
+	border-image: url(]]..getMudletHomeDir()..[[/]]..arm.packageName..[[/assets/topborder.png);
+]])
+
+equipmentLeftBorder = Geyser.Label:new({
+	name = "equipmentLeftBorder",
+	x = 0,
+	y = 20,
+	width = 9,
+	height = -1,
+}, equipmentContainer)
+
+setStyleWithSlash(equipmentLeftBorder, [[
+	border-image: url(]]..getMudletHomeDir()..[[/]]..arm.packageName..[[/assets/leftborder.png);
+]])
+
+equipmentRightBorder = Geyser.Label:new({
+	name = "equipmentRightBorder",
+	x = -9,
+	y = 20,
+	width = 9,
+	height = -1,
+}, equipmentContainer)
+
+setStyleWithSlash(equipmentRightBorder, [[
+	border-image: url(]]..getMudletHomeDir()..[[/]]..arm.packageName..[[/assets/rightborder.png);
+]])
+
+equipmentBottomLeftCorner = Geyser.Label:new({
+	name = "equipmentBottomLeftCorner",
+	x = 0,
+	y = -20,
+	width = 20,
+	height = 20,
+}, equipmentContainer)
+
+setStyleWithSlash(equipmentBottomLeftCorner, [[
+	border-image: url(]]..getMudletHomeDir()..[[/]]..arm.packageName..[[/assets/bottomleftcorner.png);
+]])
+
+equipmentBottomRightCorner = Geyser.Label:new({
+	name = "equipmentBottomRightCorner",
+	x = -20,
+	y = -20,
+	width = 20,
+	height = 21,
+}, equipmentContainer)
+
+setStyleWithSlash(equipmentBottomRightCorner, [[
+	border-image: url(]]..getMudletHomeDir()..[[/]]..arm.packageName..[[/assets/bottomrightcorner.png);
+]])
+
+equipmentBottomBorder = Geyser.Label:new({
+	name = "equipmentBottomBorder",
+	x = 20,
+	y = -9,
+	width = -20,
+	height = 9,
+}, equipmentContainer)
+
+setStyleWithSlash(equipmentBottomBorder, [[
+	border-image: url(]]..getMudletHomeDir()..[[/]]..arm.packageName..[[/assets/bottomborder.png);
+]])
+
+inventoryContainer = Geyser.Label:new({
+	name = "inventoryContainer",
+	x = "0",
+	y = "55",
+	width = "350",
+	height = "-120",
+}, main)
+
+inventoryContainer:setStyleSheet([[
+	border-radius: 3px;
+	background-opacity: 1;
+	background-color: #251D1A;
+	background-image: url(]]..getMudletHomeDir()..[[/]]..arm.packageName..[[/assets/bg.png);
+	background-position: 'bottom';
+	background-size: 'cover';
+]])
+
+inventoryTopLeftCorner = Geyser.Label:new({
+	name = "inventoryTopLeftCorner",
+	x = 0,
+	y = 0,
+	width = 20,
+	height = 20,
+}, inventoryContainer)
+
+setStyleWithSlash(inventoryTopLeftCorner, [[
+	border-image: url(]]..getMudletHomeDir()..[[/]]..arm.packageName..[[/assets/topleftcorner.png);
+]])
+
+inventoryTopRightCorner = Geyser.Label:new({
+	name = "inventoryTopRightCorner",
+	x = -20,
+	y = 0,
+	width = 20,
+	height = 20,
+}, inventoryContainer)
+
+setStyleWithSlash(inventoryTopRightCorner, [[
+	border-image: url(]]..getMudletHomeDir()..[[/]]..arm.packageName..[[/assets/toprightcorner.png);
+]])
+
+inventoryTopBorder = Geyser.Label:new({
+	name = "inventoryTopBorder",
+	x = 20,
+	y = 0,
+	width = -20,
+	height = 9,
+}, inventoryContainer)
+
+setStyleWithSlash(inventoryTopBorder, [[
+	border-image: url(]]..getMudletHomeDir()..[[/]]..arm.packageName..[[/assets/topborder.png);
+]])
+
+inventoryLeftBorder = Geyser.Label:new({
+	name = "inventoryLeftBorder",
+	x = 0,
+	y = 20,
+	width = 9,
+	height = -1,
+}, inventoryContainer)
+
+setStyleWithSlash(inventoryLeftBorder, [[
+	border-image: url(]]..getMudletHomeDir()..[[/]]..arm.packageName..[[/assets/leftborder.png);
+]])
+
+inventoryRightBorder = Geyser.Label:new({
+	name = "inventoryRightBorder",
+	x = -9,
+	y = 20,
+	width = 9,
+	height = -1,
+}, inventoryContainer)
+
+setStyleWithSlash(inventoryRightBorder, [[
+	border-image: url(]]..getMudletHomeDir()..[[/]]..arm.packageName..[[/assets/rightborder.png);
+]])
+
+inventoryBottomLeftCorner = Geyser.Label:new({
+	name = "inventoryBottomLeftCorner",
+	x = 0,
+	y = -20,
+	width = 20,
+	height = 20,
+}, inventoryContainer)
+
+setStyleWithSlash(inventoryBottomLeftCorner, [[
+	border-image: url(]]..getMudletHomeDir()..[[/]]..arm.packageName..[[/assets/bottomleftcorner.png);
+]])
+
+inventoryBottomRightCorner = Geyser.Label:new({
+	name = "inventoryBottomRightCorner",
+	x = -20,
+	y = -20,
+	width = 20,
+	height = 21,
+}, inventoryContainer)
+
+setStyleWithSlash(inventoryBottomRightCorner, [[
+	border-image: url(]]..getMudletHomeDir()..[[/]]..arm.packageName..[[/assets/bottomrightcorner.png);
+]])
+
+inventoryBottomBorder = Geyser.Label:new({
+	name = "inventoryBottomBorder",
+	x = 20,
+	y = -9,
+	width = -20,
+	height = 9,
+}, inventoryContainer)
+
+setStyleWithSlash(inventoryBottomBorder, [[
+	border-image: url(]]..getMudletHomeDir()..[[/]]..arm.packageName..[[/assets/bottomborder.png);
+]])
+
+emotingContainer = Geyser.Label:new({
+	name = "emotingContainer",
+	x = "350",
+	y = "0",
+	width = "400",
+	height = "200",
+}, main)
+
+emotingContainer:setStyleSheet([[
+	border-radius: 3px;
+	background-opacity: 1;
+]])
+
+emoting = Geyser.Label:new({
+	name = "emoting",
+	x = "5",
+	y = "5",
+	width = "-5",
+	height = "-1",
+}, emotingContainer)
+
+setStyleWithSlash(emoting, [[
+	background-color: #251D1A;
+	background-image: url(]]..getMudletHomeDir()..[[/]]..arm.packageName..[[/assets/bg.png);
+	background-position: 'bottom';
+	background-size: 'cover';
+]])
+
+emotingTopLeftCorner = Geyser.Label:new({
+	name = "emotingTopLeftCorner",
+	x = 0,
+	y = 0,
+	width = 20,
+	height = 20,
+}, emotingContainer)
+
+setStyleWithSlash(emotingTopLeftCorner, [[
+	border-image: url(]]..getMudletHomeDir()..[[/]]..arm.packageName..[[/assets/topleftcorner.png);
+]])
+
+emotingTopRightCorner = Geyser.Label:new({
+	name = "emotingTopRightCorner",
+	x = -20,
+	y = 0,
+	width = 20,
+	height = 20,
+}, emotingContainer)
+
+setStyleWithSlash(emotingTopRightCorner, [[
+	border-image: url(]]..getMudletHomeDir()..[[/]]..arm.packageName..[[/assets/toprightcorner.png);
+]])
+
+emotingTopBorder = Geyser.Label:new({
+	name = "emotingTopBorder",
+	x = 20,
+	y = 0,
+	width = -20,
+	height = 9,
+}, emotingContainer)
+
+setStyleWithSlash(emotingTopBorder, [[
+	border-image: url(]]..getMudletHomeDir()..[[/]]..arm.packageName..[[/assets/topborder.png);
+]])
+
+emotingLeftBorder = Geyser.Label:new({
+	name = "emotingLeftBorder",
+	x = 0,
+	y = 20,
+	width = 9,
+	height = -1,
+}, emotingContainer)
+
+setStyleWithSlash(emotingLeftBorder, [[
+	border-image: url(]]..getMudletHomeDir()..[[/]]..arm.packageName..[[/assets/leftborder.png);
+]])
+
+emotingRightBorder = Geyser.Label:new({
+	name = "emotingRightBorder",
+	x = -9,
+	y = 20,
+	width = 9,
+	height = -1,
+}, emotingContainer)
+
+setStyleWithSlash(emotingRightBorder, [[
+	border-image: url(]]..getMudletHomeDir()..[[/]]..arm.packageName..[[/assets/rightborder.png);
+]])
+
+emotingBottomLeftCorner = Geyser.Label:new({
+	name = "emotingBottomLeftCorner",
+	x = 0,
+	y = -20,
+	width = 20,
+	height = 20,
+}, emotingContainer)
+
+setStyleWithSlash(emotingBottomLeftCorner, [[
+	border-image: url(]]..getMudletHomeDir()..[[/]]..arm.packageName..[[/assets/bottomleftcorner.png);
+]])
+
+emotingBottomRightCorner = Geyser.Label:new({
+	name = "emotingBottomRightCorner",
+	x = -20,
+	y = -20,
+	width = 20,
+	height = 21,
+}, emotingContainer)
+
+setStyleWithSlash(emotingBottomRightCorner, [[
+	border-image: url(]]..getMudletHomeDir()..[[/]]..arm.packageName..[[/assets/bottomrightcorner.png);
+]])
+
+emotingBottomBorder = Geyser.Label:new({
+	name = "emotingBottomBorder",
+	x = 20,
+	y = -9,
+	width = -20,
+	height = 9,
+}, emotingContainer)
+
+setStyleWithSlash(emotingBottomBorder, [[
+	border-image: url(]]..getMudletHomeDir()..[[/]]..arm.packageName..[[/assets/bottomborder.png);
+]])
+
+emotingConsoleBorder = Geyser.Label:new({
+	name = "emotingConsoleBorder",
+	x = "10",
+	y = "10",
+	width = "-10",
+	height = "-10",
+	nestable = true,
+}, emoting)
+
+setStyleWithSlash(emotingConsoleBorder, [[
+	background: rgba(33, 29, 23, 0.6);
+	border: 1px solid rgb(11, 10, 8);
+	border-radius: 2px;
+]])
+
+emotingConsole = Geyser.MiniConsole:new({
+	name = "emotingConsole",
+	x = 5,
+	y = 5,
+	width = -5,
+	height = -5,
+	scrollBar = false,
+	color = "#16130f",
+	autoWrap = true,
+}, emotingConsoleBorder)
+
+emotingConsole:enableAutoWrap()
+emotingConsole:setColor('#16130f')
+clearWindow('emotingConsole')
+emotingConsole:cecho("Symbol    Reference         Target Sees\n")
+emotingConsole:cecho("------    ---------         -----------\n")
+emotingConsole:cecho("  ~       (sdesc)           you\n")
+emotingConsole:cecho("  !       him/her           you\n")
+emotingConsole:cecho("  %       (sdesc)'s         your\n")
+emotingConsole:cecho("  ^       his/her           your\n")
+emotingConsole:cecho("  #       he/she            you\n")
+emotingConsole:cecho("  &amp;       himself/herself   yourself\n")
+emotingConsole:cecho("  =       (sdesc)'s         yours\n")
+emotingConsole:cecho("  +       his/hers          yours\n")
+emotingContainer:hide()
+
+function enableEquipment()
+	if isInventoryVisible then
+    inventoryContainer:hide()
+		isInventoryVisible = false
+
+		setStyleWithSlash(inventoryButton, [[
+    	QLabel {
+        	font-family: 'Fondamento', serif;
+        	qproperty-alignment: 'AlignCenter';
+        	border-image: url(]]..getMudletHomeDir()..[[/]]..arm.packageName..[[/assets/button.png);
+    	}
+    	QLabel:hover {
+    		border-image: url(]]..getMudletHomeDir()..[[/]]..arm.packageName..[[/assets/button_hovered.png);
+    	}
+    	QLabel:pressed {
+    		border-image: url(]]..getMudletHomeDir()..[[/]]..arm.packageName..[[/assets/button_pressed.png);
+    	}
+    ]])
+	end
+
+  equipmentContainer:show()
+  	isEquipmentVisible = true
+
+  setStyleWithSlash(equipmentButton, [[
+  	QLabel {
+      	font-family: 'Fondamento', serif;
+      	qproperty-alignment: 'AlignCenter';
+      	border-image: url(]]..getMudletHomeDir()..[[/]]..arm.packageName..[[/assets/button_disabled.png);
+  	}
+  ]])
+end
+
+equipmentButton = Geyser.Label:new({
+	name = "equipmentButton",
+	x = "175",
+	y = "35",
+	width = "175",
+	height = "40",
+	message = [[&lt;center&gt;Equipment&lt;/center&gt;]]
+}, main)
+
+setStyleWithSlash(equipmentButton, [[
+	QLabel {
+    	font-family: 'Fondamento', serif;
+    	qproperty-alignment: 'AlignCenter';
+    	border-image: url(]]..getMudletHomeDir()..[[/]]..arm.packageName..[[/assets/button.png);
+	}
+	QLabel:hover {
+		border-image: url(]]..getMudletHomeDir()..[[/]]..arm.packageName..[[/assets/button_hovered.png);
+	}
+	QLabel:pressed {
+		border-image: url(]]..getMudletHomeDir()..[[/]]..arm.packageName..[[/assets/button_pressed.png);
+	}
+]])
+
+eqScrollUpButton = Geyser.Label:new({
+	name = "eqScrollUpButton",
+	x = "330",
+	y = "18",
+	width = "30",
+	height = "30"
+}, equipmentContainer)
+
+setStyleWithSlash(eqScrollUpButton, [[
+	QLabel {
+		qproperty-alignment: 'AlignCenter';
+		border-image: url(]].. arm.assetsPath .. [[/uparrow_normal.png);
+	}
+	QLabel:hover {
+		qproperty-alignment: 'AlignCenter';
+		border-image: url(]] .. arm.assetsPath .. [[/uparrow_hovered.png);
+	}
+]])
+
+eqScrollDownButton = Geyser.Label:new({
+	name = "eqScrollDownButton",
+	x = "330",
+	y = "48",
+	width = "30",
+	height = "30"
+}, equipmentContainer)
+
+setStyleWithSlash(eqScrollDownButton, [[
+	QLabel {
+		qproperty-alignment: 'AlignCenter';
+		border-image: url(]].. arm.assetsPath .. [[/downarrow_normal.png);
+	}
+	QLabel:hover {
+		qproperty-alignment: 'AlignCenter';
+		border-image: url(]] .. arm.assetsPath .. [[/downarrow_hovered.png);
+	}
+]])
+
+function determineScrollAppearance()
+	if startingEquipment &gt; 0 then
+		if startingEquipment &gt;= #equipment - 1 then
+      setStyleWithSlash(eqScrollUpButton, [[
+      	QLabel {
+      		qproperty-alignment: 'AlignCenter';
+      		border-image: url(]].. arm.assetsPath .. [[/uparrow_normal.png);
+      	}
+      	QLabel:hover {
+      		qproperty-alignment: 'AlignCenter';
+      		border-image: url(]] .. arm.assetsPath .. [[/uparrow_hovered.png);
+      	}
+      ]])
+
+      setStyleWithSlash(eqScrollDownButton, [[
+      	QLabel {
+      		qproperty-alignment: 'AlignCenter';
+      		border-image: url(]].. arm.assetsPath .. [[/downarrow_disabled.png);
+      	}
+      ]])
+		else
+			setStyleWithSlash(eqScrollDownButton, [[
+      	QLabel {
+      		qproperty-alignment: 'AlignCenter';
+      		border-image: url(]].. arm.assetsPath .. [[/downarrow_normal.png);
+      	}
+      	QLabel:hover {
+      		qproperty-alignment: 'AlignCenter';
+      		border-image: url(]] .. arm.assetsPath .. [[/downarrow_hovered.png);
+      	}
+      ]])
+
+      setStyleWithSlash(eqScrollUpButton, [[
+      	QLabel {
+      		qproperty-alignment: 'AlignCenter';
+      		border-image: url(]].. arm.assetsPath .. [[/uparrow_normal.png);
+      	}
+      	QLabel:hover {
+      		qproperty-alignment: 'AlignCenter';
+      		border-image: url(]] .. arm.assetsPath .. [[/uparrow_hovered.png);
+      	}
+      ]])
+		end
+	else
+		if #equipment &lt; 2 then
+      setStyleWithSlash(eqScrollUpButton, [[
+      	QLabel {
+      		qproperty-alignment: 'AlignCenter';
+      		border-image: url(]].. arm.assetsPath .. [[/uparrow_disabled.png);
+      	}
+      ]])
+      setStyleWithSlash(eqScrollDownButton, [[
+      	QLabel {
+      		qproperty-alignment: 'AlignCenter';
+      		border-image: url(]].. arm.assetsPath .. [[/downarrow_disabled.png);
+      	}
+      ]])
+		else
+      setStyleWithSlash(eqScrollUpButton, [[
+      	QLabel {
+      		qproperty-alignment: 'AlignCenter';
+      		border-image: url(]].. arm.assetsPath .. [[/uparrow_disabled.png);
+      	}
+      ]])
+
+			setStyleWithSlash(eqScrollDownButton, [[
+      	QLabel {
+      		qproperty-alignment: 'AlignCenter';
+      		border-image: url(]].. arm.assetsPath .. [[/downarrow_normal.png);
+      	}
+      	QLabel:hover {
+      		qproperty-alignment: 'AlignCenter';
+      		border-image: url(]] .. arm.assetsPath .. [[/downarrow_hovered.png);
+      	}
+      ]])
+		end
+	end
+end
+
+function eqScrollUp()
+	if startingEquipment &gt; 0 then
+		startingEquipment = startingEquipment - 1
+		populateEquipment(equipment)
+	end
+
+	determineScrollAppearance()
+end
+
+function eqScrollDown()
+	if startingEquipment &lt; #equipment - 1 then
+  	startingEquipment = startingEquipment + 1
+  	populateEquipment(equipment)
+	end
+
+	determineScrollAppearance()
+end
+
+function enableInventory()
+	if isEquipmentVisible then
+    equipmentContainer:hide()
+		isEquipmentVisible = false
+
+		setStyleWithSlash(equipmentButton, [[
+    	QLabel {
+        	font-family: 'Fondamento', serif;
+        	qproperty-alignment: 'AlignCenter';
+        	border-image: url(]]..getMudletHomeDir()..[[/]]..arm.packageName..[[/assets/button.png);
+    	}
+    	QLabel:hover {
+    		border-image: url(]]..getMudletHomeDir()..[[/]]..arm.packageName..[[/assets/button_hovered.png);
+    	}
+    	QLabel:pressed {
+    		border-image: url(]]..getMudletHomeDir()..[[/]]..arm.packageName..[[/assets/button_pressed.png);
+    	}
+    ]])
+	end
+
+  inventoryContainer:show()
+  	isInventoryVisible = true
+
+  setStyleWithSlash(inventoryButton, [[
+  	QLabel {
+      	font-family: 'Fondamento', serif;
+      	qproperty-alignment: 'AlignCenter';
+      	border-image: url(]]..getMudletHomeDir()..[[/]]..arm.packageName..[[/assets/button_disabled.png);
+  	}
+  ]])
+end
+
+inventoryButton = Geyser.Label:new({
+	name = "inventoryButton",
+	x = "0px",
+	y = "35",
+	width = "175",
+	height = "40",
+	message = [[&lt;center&gt;Inventory&lt;/center&gt;]]
+}, main)
+
+setStyleWithSlash(inventoryButton, [[
+	QLabel {
+    	font-family: 'Fondamento', serif;
+    	qproperty-alignment: 'AlignCenter';
+    	border-image: url(]]..getMudletHomeDir()..[[/]]..arm.packageName..[[/assets/button.png);
+	}
+	QLabel:hover {
+		border-image: url(]]..getMudletHomeDir()..[[/]]..arm.packageName..[[/assets/button_hovered.png);
+	}
+	QLabel:pressed {
+		border-image: url(]]..getMudletHomeDir()..[[/]]..arm.packageName..[[/assets/button_pressed.png);
+	}
+]])
+
+function toggleEmoting()
+	if isEmotingVisible then
+    emotingContainer:hide()
+		isEmotingVisible = false
+  else
+    emotingContainer:show()
+		isEmotingVisible = true
+  end
+end
+
+emotingButton = Geyser.Label:new({
+	name = "emotingButton",
+	x = "75",
+	y = "0",
+	width = "200",
+	height = "40",
+	message = [[&lt;center&gt;Emoting&lt;/center&gt;]]
+}, main)
+
+setStyleWithSlash(emotingButton, [[
+	QLabel {
+    	font-family: 'Fondamento', serif;
+    	qproperty-alignment: 'AlignCenter';
+    	border-image: url(]]..getMudletHomeDir()..[[/]]..arm.packageName..[[/assets/button.png);
+	}
+	QLabel:hover {
+		border-image: url(]]..getMudletHomeDir()..[[/]]..arm.packageName..[[/assets/button_hovered.png);
+	}
+	QLabel:pressed {
+		border-image: url(]]..getMudletHomeDir()..[[/]]..arm.packageName..[[/assets/button_pressed.png);
+	}
+]])
+
+eqScrollUpButton:setClickCallback("eqScrollUp")
+eqScrollDownButton:setClickCallback("eqScrollDown")
+emotingButton:setClickCallback("toggleEmoting")
+inventoryButton:setClickCallback("enableInventory")
+equipmentButton:setClickCallback("enableEquipment")
+
+if isInventoryVisible and isEquipmentVisible then
+	enableInventory()
+end
+
+initiateEquipment()
+initiateInventory()
+
+function captureDataSend(_, command)
+	if command == "eq" or command == "equipment" then
+		if doEnableEquipment then
+			enableEquipment()
+		end
+
+		doEnableEquipment = true
+	elseif command == "i" or command == "inv" then
+		if doEnableInventory then
+			enableInventory()
+		end
+
+		doEnableInventory = true
+	end
+end
+
+function onGameExit(_)
+	disableTimer("refreshInventory")
+	disableTimer("refreshEquipment")
+end
+
+registerAnonymousEventHandler("sysDataSendRequest", "captureDataSend")
+registerAnonymousEventHandler("sysDisconnectionEvent", "onGameExit")</script>
+			<eventHandlerList />
+		</Script>
+		<Script isActive="yes" isFolder="no">
+			<name>prompt</name>
+			<packageName></packageName>
+			<script>arm = arm or {}
+arm.version = "4.0.1"
+arm.packageName = "arm_gui"
+arm.downloadPath = "https://github.com/armageddon-mudlet/armageddon-mudlet/raw/master/released/" .. arm.packageName
+arm.assetsPath = getMudletHomeDir()..[[/]]..arm.packageName..[[/assets/]]
+
+local profilePath = getMudletHomeDir()
+profilePath = profilePath:gsub("\\","/")
+
+setBorderBottom(128)
+setBorderColor(22,19,15)
+setBgColor(22,19,15)
+setBackgroundColor(22,19,15)
+
+setStyleWithSlash = function (element, style)
+  element:setStyleSheet(style:gsub("\\","/"))
+end
+
+bottomBarBorder = Geyser.Label:new({
+	name = "bottomBarBorder",
+	x = "0",
+	y = "-120",
+	width = "100%",
+	height = "120",
+}, main)
+setStyleWithSlash(bottomBarBorder, [[
+	border-radius: 3px;
+	border-image: url(]]..getMudletHomeDir()..[[/]]..arm.packageName..[[/assets/border.png);
+	background-opacity: 1;
+]])
+
+bottomBar = Geyser.Label:new({
+	name = "bottomBar",
+	x = "10",
+	y = "10",
+	width = "-10",
+	height = "-10",
+}, bottomBarBorder)
+setStyleWithSlash(bottomBar, [[
+	background-color: #251D1A;
+	background-image: url(]]..getMudletHomeDir()..[[/]]..arm.packageName..[[/assets/bg.png);
+	background-position: 'bottom';
+	background-size: 'cover';
+]])
+
+topLeftCorner = Geyser.Label:new({
+	name = "topLeftCorner",
+	x = 0,
+	y = 0,
+	width = 20,
+	height = 20,
+}, bottomBarBorder)
+setStyleWithSlash(topLeftCorner, [[
+	border-image: url(]]..getMudletHomeDir()..[[/]]..arm.packageName..[[/assets/topleftcorner.png);
+]])
+
+topRightCorner = Geyser.Label:new({
+	name = "topRightCorner",
+	x = -20,
+	y = 0,
+	width = 20,
+	height = 20,
+}, bottomBarBorder)
+setStyleWithSlash(topRightCorner, [[
+	border-image: url(]]..getMudletHomeDir()..[[/]]..arm.packageName..[[/assets/toprightcorner.png);
+]])
+
+bottomLeftCorner = Geyser.Label:new({
+	name = "bottomLeftCorner",
+	x = 0,
+	y = -20,
+	width = 20,
+	height = 20,
+}, bottomBarBorder)
+setStyleWithSlash(bottomLeftCorner, [[
+	border-image: url(]]..getMudletHomeDir()..[[/]]..arm.packageName..[[/assets/bottomleftcorner.png);
+]])
+
+bottomRightCorner = Geyser.Label:new({
+	name = "bottomRightCorner",
+	x = -20,
+	y = -20,
+	width = 20,
+	height = 21,
+}, bottomBarBorder)
+setStyleWithSlash(bottomRightCorner, [[
+	border-image: url(]]..getMudletHomeDir()..[[/]]..arm.packageName..[[/assets/bottomrightcorner.png);
+]])
+
+topBorder = Geyser.Label:new({
+	name = "topBorder",
+	x = 20,
+	y = 0,
+	width = -20,
+	height = 9,
+}, bottomBarBorder)
+setStyleWithSlash(topBorder, [[
+	border-image: url(]]..getMudletHomeDir()..[[/]]..arm.packageName..[[/assets/topborder.png);
+]])
+
+leftBorder = Geyser.Label:new({
+	name = "leftBorder",
+	x = 0,
+	y = 20,
+	width = 9,
+	height = -20,
+}, bottomBarBorder)
+setStyleWithSlash(leftBorder, [[
+	border-image: url(]]..getMudletHomeDir()..[[/]]..arm.packageName..[[/assets/leftborder.png);
+]])
+
+rightBorder = Geyser.Label:new({
+	name = "rightBorder",
+	x = -9,
+	y = 20,
+	width = 9,
+	height = -20,
+}, bottomBarBorder)
+setStyleWithSlash(rightBorder, [[
+	border-image: url(]]..getMudletHomeDir()..[[/]]..arm.packageName..[[/assets/rightborder.png);
+]])
+
+bottomBorder = Geyser.Label:new({
+	name = "bottomBorder",
+	x = 20,
+	y = -9,
+	width = -20,
+	height = 9,
+}, bottomBarBorder)
+
+setStyleWithSlash(bottomBorder, [[
+	border-image: url(]]..getMudletHomeDir()..[[/]]..arm.packageName..[[/assets/bottomborder.png);
+]])
+
+pointsBar = Geyser.Label:new({
+	name = "pointsBar",
+	x = "5",
+	y = "5",
+	width = "31%",
+	height = "90",
+}, bottomBar)
+
+pointsBar:setStyleSheet([[
+	background: rgba(33, 29, 23, 0.6);
+	border: 1px solid rgb(11, 10, 8);
+	border-radius: 2px;
+]])
+
+pointsBar.labels = Geyser.VBox:new({
+	name = "pointsBar.labels",
+	x = "5px",
+	y = "8%",
+	width = "30%",
+	height = "90%",
+}, pointsBar)
+
+pointsBar.box = Geyser.VBox:new({
+	name = "pointsBar.box",
+	x = "30%",
+	y = "5",
+	width = "68%",
+	height = "90%",
+}, pointsBar)
+
+HPBar = Geyser.Gauge:new({
+	name="HPBar",
+	x=0, y=0,
+}, pointsBar.box)
+
+HPBar.front:setStyleSheet([[
+	background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #81b347, stop: 0.1 #7ab341, stop: 0.49 #62852e, stop: 0.5 #3b5c19, stop: 1 #59852c);
+	border: 1px solid rgb(11, 10, 8);
+	border-radius: 0px;
+]])
+
+HPBar.back:setStyleSheet([[
+	border: 1px solid rgb(11, 10, 8);
+	border-radius: 0px;
+]])
+
+HPLabel = Geyser.Label:new({
+	name = "HPLabel",
+	x = 0, y = 0,
+	width = "100%", height = "100%",
+	fgColor = "#EADFD4",
+	message = [[Health]]
+}, pointsBar.labels)
+
+HPLabel:setStyleSheet([[
+	background: rgba(0,0,0,0);
+	font-family: 'Fondamento', serif;
+	qproperty-alignment: 'AlignLeft';
+	text-shadow: 4px 4px 2px rgba(150, 150, 150, 1);
+]])
+
+HPInfo = Geyser.Label:new({
+	name = "HPInfo",
+	x = 0, y = 0,
+	width = "100%", height = "100%",
+	fgColor = "#EADFD4",
+}, HPBar)
+
+HPInfo:setStyleSheet([[
+	font-family: 'Fondamento', serif;
+	qproperty-alignment: 'AlignCenter';
+	background: rgba(0,0,0,0);
+]])
+
+HPInfo:echo("HP")
+
+MVBar = Geyser.Gauge:new({
+	name = "MVBar",
+	x="0%", y="5%",
+}, pointsBar.box)
+
+MVBar.front:setStyleSheet([[
+	background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #bd883d, stop: 0.1 #bd8537, stop: 0.49 #996a28, stop: 0.5 #704b16, stop: 1 #996927);
+	border: 1px solid rgb(11, 10, 8);
+	border-radius: 0px;
+]])
+
+MVBar.back:setStyleSheet([[
+	border: 1px solid rgb(11, 10, 8);
+	border-radius: 0px;
+]])
+
+MVLabel = Geyser.Label:new({
+	name = "MVLabel",
+	x = 0, y = 0,
+	width = "100%", height = "100%",
+	fgColor = "#EADFD4",
+	message = [[Stamina]],
+}, pointsBar.labels)
+MVLabel:setColor(0,0,0,0)
+
+MVLabel:setStyleSheet([[
+	background: rgba(0,0,0,0);
+	font-family: 'Fondamento', serif;
+	qproperty-alignment: 'AlignLeft';
+]])
+
+MVInfo = Geyser.Label:new({
+	name = "MVInfo",
+	x = 0, y = 0,
+	width = "100%", height = "100%",
+	fgColor = "#EADFD4",
+}, MVBar)
+
+MVInfo:setStyleSheet([[
+	font-family: 'Fondamento', serif;
+	qproperty-alignment: 'AlignCenter';
+	background: rgba(0,0,0,0);
+]])
+
+MVInfo:echo("MV")
+
+STBar = Geyser.Gauge:new({
+	name = "STBar",
+	x="0%", y="10%",
+}, pointsBar.box)
+
+STBar.front:setStyleSheet([[
+	background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #bd3d72, stop: 0.1 #bd376f, stop: 0.49 #992757, stop: 0.5 #70163b, stop: 1 #992756);
+	border: 1px solid rgb(11, 10, 8);
+	border-radius: 0px;
+]])
+
+STBar.back:setStyleSheet([[
+	border: 1px solid rgb(11, 10, 8);
+	border-radius: 0px;
+]])
+
+STLabel = Geyser.Label:new({
+	name = "STLabel",
+	x = 0, y = 0,
+	width = "100%", height = "100%",
+	fgColor = "#EADFD4",
+	message = [[Stun]]
+}, pointsBar.labels)
+
+STLabel:setStyleSheet([[
+	background: rgba(0,0,0,0);
+	font-family: 'Fondamento', serif;
+	qproperty-alignment: 'AlignLeft';
+]])
+
+STInfo = Geyser.Label:new({
+	name = "STInfo",
+	x = 0, y = 0,
+	width = "100%", height = "100%",
+	fgColor = "#EADFD4",
+}, STBar)
+
+STInfo:setStyleSheet([[
+	font-family: 'Fondamento', serif;
+	qproperty-alignment: 'AlignCenter';
+	background: rgba(0,0,0,0);
+]])
+
+STInfo:echo("ST")
+
+MABar = Geyser.Gauge:new({
+	name = "MABar",
+	x="0%", y="15%",
+}, pointsBar.box)
+
+MABar.front:setStyleSheet([[
+	background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #3dbdb9, stop: 0.1 #37bdb9, stop: 0.49 #279995, stop: 0.5 #16706d, stop: 1 #279995);
+	border: 1px solid rgb(11, 10, 8);
+	border-radius: 0px;
+]])
+
+MABar.back:setStyleSheet([[
+	border: 1px solid rgb(11, 10, 8);
+	border-radius: 0px;
+]])
+
+MALabel = Geyser.Label:new({
+	name = "MALabel",
+	x = 0, y = 0,
+	width = "100%", height = "100%",
+	fgColor = "#EADFD4",
+	message = [[Mana]]
+}, pointsBar.labels)
+MALabel:setColor(0,0,0,0)
+
+MALabel:setStyleSheet([[
+	background: rgba(0,0,0,0);
+	font-family: 'Fondamento', serif;
+	qproperty-alignment: 'AlignLeft';
+]])
+
+MAInfo = Geyser.Label:new({
+	name = "MAInfo",
+	x = 0, y = 0,
+	width = "100%", height = "100%",
+	fgColor = "#EADFD4",
+}, MABar)
+
+MAInfo:setStyleSheet([[
+	font-family: 'Fondamento', serif;
+	qproperty-alignment: 'AlignCenter';
+	background: rgba(0,0,0,0);
+]])
+
+MAInfo:echo("MA")
+
+FOBar = Geyser.Gauge:new({
+	name = "FOBar",
+	x="0%", y="20%",
+}, pointsBar.box)
+
+FOBar.front:setStyleSheet([[
+	background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #483abd, stop: 0.1 #483abd, stop: 0.49 #272061, stop: 0.5 #13102e, stop: 1 #2b2566);
+	border: 1px solid rgb(11, 10, 8);
+	border-radius: 0px;
+]])
+
+FOBar.back:setStyleSheet([[
+	border: 1px solid rgb(11, 10, 8);
+	border-radius: 0px;
+]])
+
+FOLabel = Geyser.Label:new({
+	name = "FOLabel",
+	x = 0, y = 0,
+	width = "100%", height = "100%",
+	fgColor = "#EADFD4",
+	message = [[Focus]]
+}, pointsBar.labels)
+MALabel:setColor(0,0,0,0)
+
+FOLabel:setStyleSheet([[
+	background: rgba(0,0,0,0);
+	font-family: 'Fondamento', serif;
+	qproperty-alignment: 'AlignLeft';
+]])
+
+FOInfo = Geyser.Label:new({
+	name = "FOInfo",
+	x = 0, y = 0,
+	width = "100%", height = "100%",
+	fgColor = "#EADFD4",
+}, FOBar)
+
+FOInfo:setStyleSheet([[
+	font-family: 'Fondamento', serif;
+	qproperty-alignment: 'AlignCenter';
+	background: rgba(0,0,0,0);
+]])
+
+FOInfo:echo("FO")
+
+calculateBarColor = function(current, max)
+	local calc = (10 * current) / max
+	local hue = ((calc * 0.1) * (85 - 0)) + 0
+	local sat = ((calc * 0.1) * (150 - 235)) + 235
+
+	local color1 = "hsv(" .. hue .. "," .. sat - 3 ..",169)"
+	local color2 = "hsv(" .. hue .. "," .. sat .. ",169)"
+	local color3 = "hsv(" .. hue .. "," .. sat .. ",133)"
+	local color4 = "hsv(" .. hue .. "," .. sat + 2 .. ",92)"
+	local color5 = "hsv(" .. hue .. "," .. sat .. ",133)"
+	return color1,color2,color3,color4,color5
+end
+
+setHP = function(current, total)
+	HPBar:setValue(current, total)
+
+	local color1,color2,color3,color4,color5 = calculateBarColor(current, total)
+	HPBar.front:setStyleSheet([[
+		background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 ]] .. color1 .. [[, stop: 0.1 ]] .. color2 .. [[, stop: 0.49 ]] .. color3 .. [[, stop: 0.5 ]] .. color4 .. [[, stop: 1 ]] .. color5 .. [[);
+  	border: 1px solid rgb(11, 10, 8);
+  	border-radius: 0px;
+	]])
+
+	return HPInfo:echo(current .. " / " .. total, nil, "c")
+end
+
+setMV = function(current, total)
+	MVBar:setValue(current, total)
+
+	local color1,color2,color3,color4,color5 = calculateBarColor(current, total)
+	MVBar.front:setStyleSheet([[
+  	background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 ]] .. color1 .. [[, stop: 0.1 ]] .. color2 .. [[, stop: 0.49 ]] .. color3 .. [[, stop: 0.5 ]] .. color4 .. [[, stop: 1 ]] .. color5 .. [[);
+  	border: 1px solid rgb(11, 10, 8);
+  	border-radius: 0px;
+	]])
+
+	return MVInfo:echo(current .. " / " .. total, nil, "c")
+end
+
+setST = function(current, total)
+	STBar:setValue(current, total)
+
+	local color1,color2,color3,color4,color5 = calculateBarColor(current, total)
+	STBar.front:setStyleSheet([[
+  	background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 ]] .. color1 .. [[, stop: 0.1 ]] .. color2 .. [[, stop: 0.49 ]] .. color3 .. [[, stop: 0.5 ]] .. color4 .. [[, stop: 1 ]] .. color5 .. [[);
+  	border: 1px solid rgb(11, 10, 8);
+  	border-radius: 0px;
+	]])
+
+	return STInfo:echo(current .. " / " .. total, nil, "c")
+end
+
+setMA = function(current, total)
+	MABar:setValue(current, total)
+
+	local color1,color2,color3,color4,color5 = calculateBarColor(current, total)
+	MABar.front:setStyleSheet([[
+  	background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 ]] .. color1 .. [[, stop: 0.1 ]] .. color2 .. [[, stop: 0.49 ]] .. color3 .. [[, stop: 0.5 ]] .. color4 .. [[, stop: 1 ]] .. color5 .. [[);
+  	border: 1px solid rgb(11, 10, 8);
+  	border-radius: 0px;
+	]])
+
+	return MAInfo:echo(current .. " / " .. total, nil, "c")
+end
+
+setFO = function(current, total)
+	FOBar:setValue(current, total)
+
+	local color1,color2,color3,color4,color5 = calculateBarColor(current, total)
+	FOBar.front:setStyleSheet([[
+  	background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 ]] .. color1 .. [[, stop: 0.1 ]] .. color2 .. [[, stop: 0.49 ]] .. color3 .. [[, stop: 0.5 ]] .. color4 .. [[, stop: 1 ]] .. color5 .. [[);
+  	border: 1px solid rgb(11, 10, 8);
+  	border-radius: 0px;
+]])
+
+	return FOInfo:echo(current .. " / " .. total, nil, "c")
+end
+
+statBar = Geyser.Label:new({
+	name = "statBar",
+	x = "32%",
+	y = "5",
+	width = "-5",
+	height = "90",
+}, bottomBar)
+
+statBar:setStyleSheet([[
+	background: rgba(33, 29, 23, 0.6);
+	border: 1px solid rgb(11, 10, 8);
+	border-radius: 2px;
+]])
+
+armedLabel = Geyser.Label:new({
+	name = "armedLabel",
+	x = "5px",
+	y = "5px",
+	width = "30%",
+	height = "25",
+	message = [[unarmed]],
+}, statBar)
+
+armedLabel:setStyleSheet([[
+	font-family: 'Fondamento', serif;
+	qproperty-alignment: 'AlignRight|AlignCenter';
+	padding-right: 10;
+	border: 1px solid rgb(11, 10, 8);
+	background: rgba(70, 62, 62, 0.6);
+	border-radius: 0px;
+]])
+
+setArmed = function(text)
+	if (text == "armed") then
+		armedLabel:setStyleSheet([[
+			font-family: 'Fondamento', serif;
+			qproperty-alignment: 'AlignRight|AlignCenter';
+			padding-right: 10;
+			background: rgba(107, 22, 1, 0.6);
+    	border: 1px solid rgb(11, 10, 8);
+    	border-radius: 0px;
+		]])
+		armedLabel:echo("armed")
+	else
+		armedLabel:setStyleSheet([[
+			font-family: 'Fondamento', serif;
+			qproperty-alignment: 'AlignRight|AlignCenter';
+			padding-right: 10;
+			background: rgba(70, 62, 62, 0.6);
+    	border: 1px solid rgb(11, 10, 8);
+    	border-radius: 0px;
+		]])
+		armedLabel:echo("unarmed")
+	end
+end
+
+riposteToggle = Geyser.Label:new({
+	name = "riposteToggle",
+	x = "32%",
+	y = "5",
+	height = "25px",
+	width = "20%",
+	message = [[Riposte]],
+}, statBar)
+
+riposteToggle:setStyleSheet([[
+  QLabel {
+  	font-family: 'Fondamento', serif;
+  	qproperty-alignment: 'AlignCenter|AlignCenter';
+  	padding-left: 10;
+  	padding-right: 10;
+  	background: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #ffddc9, stop: 0.1 #9e6e3a, stop: 0.95 #6a4825, stop: 1 #ffddc9);
+  	border: 1px solid rgb(11,10,8);
+  	border-radius: 2px;
+  }
+
+  QLabel::hover {
+    font-family: 'Fondamento', serif;
+    qproperty-alignment: 'AlignCenter|AlignCenter';
+    padding-left: 10;
+    padding-right: 10;
+    background: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #ffddc9, stop: 0.1 #be8445, stop: 0.95 #8b5e30, stop: 1 #ffddc9);
+  	border: 1px solid rgb(11, 10, 8);
+    border-radius: 2px;
+  }
+]])
+
+setRiposte = function(text)
+	if text ~= "none" then
+  	riposteToggle:setStyleSheet([[
+      QLabel {
+      	font-family: 'Fondamento', serif;
+      	qproperty-alignment: 'AlignCenter|AlignCenter';
+      	padding-left: 10;
+      	padding-right: 10;
+      	background: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #fff7f1, stop: 0.1 #6a4f35, stop: 0.95 #9e7852, stop: 1 #fff7f1);
+      	border: 1px solid rgb(11,10,8);
+      	border-radius: 2px;
+      }
+
+      QLabel::hover {
+      	font-family: 'Fondamento', serif;
+      	qproperty-alignment: 'AlignCenter|AlignCenter';
+      	padding-left: 10;
+      	padding-right: 10;
+      	background: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #ffddc9, stop: 0.1 #6a4825, stop: 0.95 #9e6e3a, stop: 1 #ffddc9);
+      	border: 1px solid rgb(11,10,8);
+      	border-radius: 2px;
+      }
+		]])
+	else
+		riposteToggle:setStyleSheet([[
+      QLabel {
+      	font-family: 'Fondamento', serif;
+      	qproperty-alignment: 'AlignCenter|AlignCenter';
+      	padding-left: 10;
+      	padding-right: 10;
+      	background: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #ffddc9, stop: 0.1 #9e6e3a, stop: 0.95 #6a4825, stop: 1 #ffddc9);
+      	border: 1px solid rgb(11,10,8);
+      	border-radius: 2px;
+      }
+
+      QLabel::hover {
+        font-family: 'Fondamento', serif;
+        qproperty-alignment: 'AlignCenter|AlignCenter';
+        padding-left: 10;
+        padding-right: 10;
+        background: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #ffddc9, stop: 0.1 #be8445, stop: 0.95 #8b5e30, stop: 1 #ffddc9);
+      	border: 1px solid rgb(11, 10, 8);
+        border-radius: 2px;
+      }
+		]])
+	end
+end
+
+riposteToggle:setClickCallback("on_riposte_press")
+function on_riposte_press()
+	send("riposte")
+end
+
+
+speedLabel = Geyser.Label:new({
+	name = "speedLabel",
+	x = "5px",
+	y = "61px",
+	width = "20%",
+	height = "25",
+	message = [[walking]],
+}, statBar)
+
+speedLabel:setStyleSheet([[
+	font-family: 'Fondamento', serif;
+	qproperty-alignment: 'AlignRight|AlignCenter';
+	padding-right: 10;
+	background: rgba(70, 62, 62, 0.6);
+	border: 1px solid rgb(11, 10, 8);
+	border-radius: 0px;
+]])
+
+speedLabelPicture = Geyser.Label:new({
+	name = "speedLabelPicture",
+	x = "5", y = "59",
+	width = "30px", height = "30px",
+}, statBar)
+setStyleWithSlash(speedLabelPicture, [[
+	background-color: rgba(0,0,0,0);
+	border-image: url(]]..getMudletHomeDir()..[[/]]..arm.packageName..[[/assets/shoes.png);
+]])
+
+setSpeed = function(speed)
+	if not (speed == "walking") then
+		speedLabel:setStyleSheet([[
+			font-family: 'Fondamento', serif;
+			qproperty-alignment: 'AlignRight|AlignCenter';
+			padding-right: 10;
+			background: #6B1601;
+    	border: 1px solid rgb(11, 10, 8);
+    	border-radius: 0px;
+		]])
+		speedLabel:echo(speed)
+	else
+		speedLabel:setStyleSheet([[
+			font-family: 'Fondamento', serif;
+			qproperty-alignment: 'AlignRight|AlignCenter';
+			padding-right: 10;
+			background: rgba(70, 62, 62, 0.6);
+    	border: 1px solid rgb(11, 10, 8);
+    	border-radius: 0px;
+		]])
+		speedLabel:echo(speed)
+	end
+end
+
+positionLabel = Geyser.Label:new({
+	name = "positionLabel",
+	x = "5px",
+	y = "33px",
+	height = "25px",
+	width = "52%",
+	message = [[standing]],
+}, statBar)
+
+positionLabel:setStyleSheet([[
+	font-family: 'Fondamento', serif;
+	qproperty-alignment: 'AlignRight|AlignCenter';
+	padding-left: 10;
+	padding-right: 10;
+	background: rgba(70, 62, 62, 0.6);
+	border: 1px solid rgb(11, 10, 8);
+	border-radius: 0px;
+]])
+
+setPosition = function(position)
+	if not (position == "standing") then
+		positionLabel:setStyleSheet([[
+			font-family: 'Fondamento', serif;
+			qproperty-alignment: 'AlignRight|AlignCenter';
+			padding-right: 10;
+			background: rgba(107, 22, 1, .6);
+    	border: 1px solid rgb(11, 10, 8);
+    	border-radius: 0px;
+		]])
+		positionLabel:echo(position)
+	else
+		positionLabel:setStyleSheet([[
+			font-family: 'Fondamento', serif;
+			qproperty-alignment: 'AlignRight|AlignCenter';
+			padding-right: 10;
+			background: rgba(70, 62, 62, 0.6);
+    	border: 1px solid rgb(11, 10, 8);
+    	border-radius: 0px;
+		]])
+		positionLabel:echo(position)
+	end
+end
+
+speechLabel = Geyser.Label:new({
+	name = "speechLabel",
+	x = "22%",
+	y = "61px",
+	width = "27%",
+	height = "25",
+	message = [[Speech]]
+}, statBar)
+
+speechLabel:setStyleSheet([[
+	font-family: 'Fondamento', serif;
+	qproperty-alignment: 'AlignCenter|AlignCenter';
+	background: rgba(70, 62, 62, 0.6);
+	border: 1px solid rgb(11, 10, 8);
+	border-radius: 0px;
+]])
+
+setSpeech = function(accent,language)
+	speechLabel:echo(accent .. "-accented " .. language)
+end
+
+weightBar = Geyser.Gauge:new({
+	name="weightBar",
+	x = "53%",
+	y = "7px",
+	width = "46%",
+	height = "20",
+}, statBar)
+
+weightBar.front:setStyleSheet([[
+	background: rgba(107, 22, 1, .6);;
+	border: 1px solid rgb(11, 10, 8);
+	border-radius: 0px;
+]])
+
+weightBar.back:setStyleSheet([[
+	background: rgba(70, 62, 62, 0.6);
+	border: 1px solid rgb(11, 10, 8);
+	border-radius: 0px;
+]])
+
+weightLabel = Geyser.Label:new({
+	name = "weightLabel",
+	x = 0,
+	y = 0,
+	width = "100%",
+	height = "100%",
+	message = [[Weight]]
+}, weightBar)
+
+weightLabel:setStyleSheet([[
+	font-family: 'Fondamento', serif;
+	qproperty-alignment: 'AlignRight|AlignCenter';
+	background: rgba(0,0,0,0);
+]])
+
+setWeight = function(weight)
+	if (weight == "very light") then
+		weightBar:setValue(1, 10)
+	elseif (weight == "no problem") then
+		weightBar:setValue(2, 10)
+	elseif (weight == "light") then
+		weightBar:setValue(3, 10)
+	elseif (weight == "easily manageable") then
+		weightBar:setValue(4, 10)
+	elseif (weight == "manageable") then
+		weightBar:setValue(5, 10)
+	elseif (weight == "heavy, but manageable") then
+		weightBar:setValue(6, 10)
+	elseif (weight == "very heavy") then
+		weightBar:setValue(7, 10)
+	elseif (weight == "VERY heavy") then
+		weightBar:setValue(8, 10)
+	elseif (weight == "extremely heavy") then
+		weightBar:setValue(9, 10)
+	elseif (weight == "unbelievably heavy") then
+		weightBar:setValue(10, 10)
+	end
+	return weightLabel:echo(weight, nil, "c")
+end
+
+setWeight("very heavy")
+
+timeLabel = Geyser.Label:new({
+	name = "timeLabel",
+	x = "53%",
+	y = "33px",
+	width = "28%",
+	height = "25",
+	message = [[Time]]
+}, statBar)
+
+timeLabel:setStyleSheet([[
+	font-family: 'Fondamento', serif;
+	qproperty-alignment: 'AlignRight|AlignCenter';
+	padding-right: 10;
+	background: rgba(70, 62, 62, 0.6);
+	border: 1px solid rgb(11, 10, 8);
+	border-radius: 0px;
+]])
+
+setTime = function(time)
+	if (time == "before dawn") then
+		timeLabel:setStyleSheet([[
+			font-family: 'Fondamento', serif;
+			qproperty-alignment: 'AlignRight|AlignCenter';
+			padding-right: 10;
+			background: rgba(94, 25, 13, 0.6);
+    	border: 1px solid rgb(11, 10, 8);
+    	border-radius: 0px;
+		]])
+	elseif (time == "dawn") then
+		timeLabel:setStyleSheet([[
+			font-family: 'Fondamento', serif;
+			qproperty-alignment: 'AlignRight|AlignCenter';
+			padding-right: 10;
+			background: rgba(119, 17, 17, 0.6);
+    	border: 1px solid rgb(11, 10, 8);
+    	border-radius: 0px;
+		]])
+	elseif (time == "early morning") then
+		timeLabel:setStyleSheet([[
+			font-family: 'Fondamento', serif;
+			qproperty-alignment: 'AlignRight|AlignCenter';
+			padding-right: 10;
+			background: rgba(157, 42, 22, 0.6);
+    	border: 1px solid rgb(11, 10, 8);
+    	border-radius: 0px;
+		]])
+	elseif (time == "late morning") then
+		timeLabel:setStyleSheet([[
+			font-family: 'Fondamento', serif;
+			qproperty-alignment: 'AlignRight|AlignCenter';
+			padding-right: 10;
+			background: rgba(192, 52, 27, 0.6);
+    	border: 1px solid rgb(11, 10, 8);
+    	border-radius: 0px;
+		]])
+	elseif (time == "high sun") then
+		timeLabel:setStyleSheet([[
+			font-family: 'Fondamento', serif;
+			qproperty-alignment: 'AlignRight|AlignCenter';
+			padding-right: 10;
+			background: rgba(215, 52, 30, 0.6);
+    	border: 1px solid rgb(11, 10, 8);
+    	border-radius: 0px;
+		]])
+	elseif (time == "early afternoon") then
+		timeLabel:setStyleSheet([[
+			font-family: 'Fondamento', serif;
+			qproperty-alignment: 'AlignRight|AlignCenter';
+			padding-right: 10;
+			background: rgba(179, 43, 25, 0.6);
+    	border: 1px solid rgb(11, 10, 8);
+    	border-radius: 0px;
+		]])
+		elseif (time == "late afternoon") then
+		timeLabel:setStyleSheet([[
+			font-family: 'Fondamento', serif;
+			qproperty-alignment: 'AlignRight|AlignCenter';
+			padding-right: 10;
+			background: rgba(128, 18, 28, 0.6);
+    	border: 1px solid rgb(11, 10, 8);
+    	border-radius: 0px;
+		]])
+		elseif (time == "dusk") then
+		timeLabel:setStyleSheet([[
+			font-family: 'Fondamento', serif;
+			qproperty-alignment: 'AlignRight|AlignCenter';
+			padding-right: 10;
+			background: rgba(47, 7, 26, 0.6);
+    	border: 1px solid rgb(11, 10, 8);
+    	border-radius: 0px;
+		]])
+		elseif (time == "late at night") then
+		timeLabel:setStyleSheet([[
+			font-family: 'Fondamento', serif;
+			qproperty-alignment: 'AlignRight|AlignCenter';
+			padding-right: 10;
+			background: rgba(17, 4, 27, 0.6);
+    	border: 1px solid rgb(17, 4, 27);
+    	border-radius: 0px;
+		]])
+	end
+	timeLabel:echo(time)
+end
+
+setTime("late at night")
+
+dayLabel = Geyser.Label:new({
+	name = "dayLabel",
+	x = "81.5%",
+	y = "33px",
+	width = "17.5%",
+	height = "25",
+	message = [[Day]]
+}, statBar)
+
+dayLabel:setStyleSheet([[
+	font-family: 'Fondamento', serif;
+	qproperty-alignment: 'AlignRight|AlignCenter';
+	padding-right: 10;
+	background: rgba(70, 62, 62, 0.6);
+	border: 1px solid rgb(11, 10, 8);
+	border-radius: 0px;
+]])
+
+setDay = function(day)
+	dayLabel:echo(day)
+end
+
+scanToggle = Geyser.Label:new({
+	name = "scanToggle",
+	x = "50%",
+	y = "61px",
+	height = "25px",
+	width = "10%",
+	message = [[Scan]],
+}, statBar)
+
+scanToggle:setStyleSheet([[
+  QLabel {
+  	font-family: 'Fondamento', serif;
+  	qproperty-alignment: 'AlignCenter|AlignCenter';
+  	padding-left: 10;
+  	padding-right: 10;
+  	background: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #ffddc9, stop: 0.1 #9e6e3a, stop: 0.95 #6a4825, stop: 1 #ffddc9);
+  	border: 1px solid rgb(11,10,8);
+  	border-radius: 2px;
+  }
+
+  QLabel::hover {
+    font-family: 'Fondamento', serif;
+    qproperty-alignment: 'AlignCenter|AlignCenter';
+    padding-left: 10;
+    padding-right: 10;
+    background: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #ffddc9, stop: 0.1 #be8445, stop: 0.95 #8b5e30, stop: 1 #ffddc9);
+  	border: 1px solid rgb(11, 10, 8);
+    border-radius: 2px;
+  }
+]])
+
+setScan = function(text)
+	if (text == "Scan") then
+  	scanToggle:setStyleSheet([[
+      QLabel {
+      	font-family: 'Fondamento', serif;
+      	qproperty-alignment: 'AlignCenter|AlignCenter';
+      	padding-left: 10;
+      	padding-right: 10;
+      	background: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #fff7f1, stop: 0.1 #6a4f35, stop: 0.95 #9e7852, stop: 1 #fff7f1);
+      	border: 1px solid rgb(11,10,8);
+      	border-radius: 2px;
+      }
+
+      QLabel::hover {
+      	font-family: 'Fondamento', serif;
+      	qproperty-alignment: 'AlignCenter|AlignCenter';
+      	padding-left: 10;
+      	padding-right: 10;
+      	background: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #ffddc9, stop: 0.1 #6a4825, stop: 0.95 #9e6e3a, stop: 1 #ffddc9);
+      	border: 1px solid rgb(11,10,8);
+      	border-radius: 2px;
+      }
+		]])
+	else
+		scanToggle:setStyleSheet([[
+      QLabel {
+      	font-family: 'Fondamento', serif;
+      	qproperty-alignment: 'AlignCenter|AlignCenter';
+      	padding-left: 10;
+      	padding-right: 10;
+      	background: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #ffddc9, stop: 0.1 #9e6e3a, stop: 0.95 #6a4825, stop: 1 #ffddc9);
+      	border: 1px solid rgb(11,10,8);
+      	border-radius: 2px;
+      }
+
+      QLabel::hover {
+        font-family: 'Fondamento', serif;
+        qproperty-alignment: 'AlignCenter|AlignCenter';
+        padding-left: 10;
+        padding-right: 10;
+        background: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #ffddc9, stop: 0.1 #be8445, stop: 0.95 #8b5e30, stop: 1 #ffddc9);
+      	border: 1px solid rgb(11, 10, 8);
+        border-radius: 2px;
+      }
+    ]])
+	end
+end
+
+scanToggle:setClickCallback("on_scan_press")
+function on_scan_press()
+	send("scan")
+end
+
+listenToggle = Geyser.Label:new({
+	name = "listenToggle",
+	x = "61%",
+	y = "61px",
+	height = "25px",
+	width = "10%",
+	message = [[Listen]],
+}, statBar)
+
+listenToggle:setStyleSheet([[
+  QLabel {
+  	font-family: 'Fondamento', serif;
+  	qproperty-alignment: 'AlignCenter|AlignCenter';
+  	padding-left: 10;
+  	padding-right: 10;
+  	background: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #ffddc9, stop: 0.1 #9e6e3a, stop: 0.95 #6a4825, stop: 1 #ffddc9);
+  	border: 1px solid rgb(11,10,8);
+  	border-radius: 2px;
+  }
+
+  QLabel::hover {
+    font-family: 'Fondamento', serif;
+    qproperty-alignment: 'AlignCenter|AlignCenter';
+    padding-left: 10;
+    padding-right: 10;
+    background: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #ffddc9, stop: 0.1 #be8445, stop: 0.95 #8b5e30, stop: 1 #ffddc9);
+  	border: 1px solid rgb(11, 10, 8);
+    border-radius: 2px;
+  }
+]])
+
+setListen = function(text)
+	if (text == "Listen") then
+  	listenToggle:setStyleSheet([[
+      QLabel {
+      	font-family: 'Fondamento', serif;
+      	qproperty-alignment: 'AlignCenter|AlignCenter';
+      	padding-left: 10;
+      	padding-right: 10;
+      	background: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #fff7f1, stop: 0.1 #6a4f35, stop: 0.95 #9e7852, stop: 1 #fff7f1);
+      	border: 1px solid rgb(11,10,8);
+      	border-radius: 2px;
+      }
+
+      QLabel::hover {
+      	font-family: 'Fondamento', serif;
+      	qproperty-alignment: 'AlignCenter|AlignCenter';
+      	padding-left: 10;
+      	padding-right: 10;
+      	background: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #ffddc9, stop: 0.1 #6a4825, stop: 0.95 #9e6e3a, stop: 1 #ffddc9);
+      	border: 1px solid rgb(11,10,8);
+      	border-radius: 2px;
+      }
+		]])
+	else
+		listenToggle:setStyleSheet([[
+      QLabel {
+      	font-family: 'Fondamento', serif;
+      	qproperty-alignment: 'AlignCenter|AlignCenter';
+      	padding-left: 10;
+      	padding-right: 10;
+      	background: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #ffddc9, stop: 0.1 #9e6e3a, stop: 0.95 #6a4825, stop: 1 #ffddc9);
+      	border: 1px solid rgb(11,10,8);
+      	border-radius: 2px;
+      }
+
+      QLabel::hover {
+        font-family: 'Fondamento', serif;
+        qproperty-alignment: 'AlignCenter|AlignCenter';
+        padding-left: 10;
+        padding-right: 10;
+        background: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #ffddc9, stop: 0.1 #be8445, stop: 0.95 #8b5e30, stop: 1 #ffddc9);
+      	border: 1px solid rgb(11, 10, 8);
+        border-radius: 2px;
+      }
+    ]])
+	end
+end
+
+listenToggle:setClickCallback("on_listen_press")
+function on_listen_press()
+	send("listen")
+end
+
+thirstBar = Geyser.Gauge:new({
+	name = "thirstBar",
+	x="72%", y="61px",
+	width="27%", height='11px'
+}, statBar)
+
+thirstBar.front:setStyleSheet([[
+	background-color: rgba(135, 170, 187, 0.8);
+	border: 1px solid rgb(11, 10, 8);
+	border-radius: 0px;
+]])
+
+thirstBar.back:setStyleSheet([[
+	border: 1px solid rgb(11, 10, 8);
+	border-radius: 0px;
+]])
+
+thirstBarPicture = Geyser.Label:new({
+	name = "thirstBarPicture",
+	x = "71%", y = "55px",
+	width = "20px", height = "20px",
+}, statBar)
+setStyleWithSlash(thirstBarPicture, [[
+	background-color: rgba(0,0,0,0);
+	border-image: url(]]..getMudletHomeDir()..[[/]]..arm.packageName..[[/assets/water.png);
+]])
+
+setThirst = function(thirst)
+	local gaugeColor
+	local val
+
+	if (thirst == "dehydrated") then
+		gaugeColor = "QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #561513, stop: 1 #a62825)"
+		thirstBar:setValue(0, 5)
+	elseif (thirst == "parched") then
+		gaugeColor = "QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #a64125, stop: 1 #562213)"
+		thirstBar:setValue(1, 5)
+	elseif (thirst == "very thirsty") then
+		gaugeColor = "QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #a65b25, stop: 1 #562f12)"
+		thirstBar:setValue(2, 5)
+	elseif (thirst == "thirsty") then
+		gaugeColor = "QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #a68625, stop: 1 #564511)"
+		thirstBar:setValue(3, 5)
+	elseif (thirst == "little thirsty") then
+		gaugeColor = "QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #a0a625, stop: 1 #52560f)"
+		thirstBar:setValue(4, 5)
+	elseif (thirst == "not thirsty") then
+		gaugeColor = "QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #65a625, stop: 1 #31560c)"
+		thirstBar:setValue(5, 5)
+	end
+
+	if thirst == "dehydrated" then
+  	thirstBar.back:setStyleSheet([[
+		background-color: ]] .. gaugeColor .. [[;
+  	border: 1px solid rgb(11, 10, 8);
+  	border-radius: 0px;
+  	]])
+  else
+  	thirstBar.front:setStyleSheet([[
+    	background-color: ]] .. gaugeColor .. [[;
+    	border: 1px solid rgb(11, 10, 8);
+    	border-radius: 0px;
+  	]])
+
+  	thirstBar.back:setStyleSheet([[
+  	border: 1px solid rgb(11, 10, 8);
+  	border-radius: 0px;
+  	]])
+	end
+end
+
+hungerBar = Geyser.Gauge:new({
+	name = "hungerBar",
+	x="72%", y="75px",
+	width="27%", height='11px'
+}, statBar)
+
+hungerBar.front:setStyleSheet([[
+	background-color: rgba(100, 87, 78, 0.5);
+	border: 1px solid rgb(11, 10, 8);
+	border-radius: 0px;
+]])
+
+hungerBar.back:setStyleSheet([[
+	border: 1px solid rgb(11, 10, 8);
+	border-radius: 0px;
+]])
+
+hungerBarPicture = Geyser.Label:new({
+	name = "hungerBarPicture",
+	x = "71%", y = "69px",
+	width = "20px", height = "20px",
+}, statBar)
+setStyleWithSlash(hungerBarPicture, [[
+	background-color: rgba(0,0,0,0);
+	border-image: url(]]..getMudletHomeDir()..[[/]]..arm.packageName..[[/assets/bread.png);
+]])
+
+setHunger = function(hunger)
+	local gaugeColor
+
+	if (hunger == "starving") then
+		gaugeColor = "QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #561513, stop: 1 #a62825)"
+		hungerBar:setValue(0, 7)
+	elseif (hunger == "famished") then
+		gaugeColor = "QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #a64125, stop: 1 #562213)"
+		hungerBar:setValue(1, 7)
+	elseif (hunger == "very hungry") then
+		gaugeColor = "QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #a65b25, stop: 1 #562f12)"
+		hungerBar:setValue(2, 7)
+	elseif (hunger == "hungry") then
+		gaugeColor = "QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #a68625, stop: 1 #564511)"
+		hungerBar:setValue(3, 7)
+	elseif (hunger == "little hungry") then
+		gaugeColor = "QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #a69b25, stop: 1 #565010)"
+		hungerBar:setValue(4, 7)
+	elseif (hunger == "peckish") then
+		gaugeColor = "QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #a0a625, stop: 1 #52560f)"
+		hungerBar:setValue(5, 7)
+	elseif (hunger == "satisfied") then
+		gaugeColor = "QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #86a625, stop: 1 #45560d)"
+		hungerBar:setValue(6, 7)
+	elseif (hunger == "full") then
+		gaugeColor = "QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #65a625, stop: 1 #31560c)"
+		hungerBar:setValue(7, 7)
+	elseif (hunger == "stuffed") then
+		gaugeColor = "QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #65a625, stop: 1 #31560c)"
+		hungerBar:setValue(7, 7)
+	end
+
+	if hunger == "starving" then
+		hungerBar.back:setStyleSheet([[
+    	background-color: ]] .. gaugeColor .. [[;
+    	border: 1px solid rgb(11, 10, 8);
+    	border-radius: 0px;
+  	]])
+	else
+  	hungerBar.front:setStyleSheet([[
+    	background-color: ]] .. gaugeColor .. [[;
+    	border: 1px solid rgb(11, 10, 8);
+    	border-radius: 0px;
+  	]])
+
+  	hungerBar.back:setStyleSheet([[
+    	background-color: none;
+    	border: 1px solid rgb(11, 10, 8);
+    	border-radius: 0px;
+  	]])
+	end
+end
+
+setThirst("dehydrated")
+setHunger("satisfied")
+
+armedLabelPicture = Geyser.Label:new({
+	name = "armedLabelPicture",
+	x = "5", y = "3",
+	width = "30px", height = "30px",
+}, statBar)
+setStyleWithSlash(armedLabelPicture, [[
+	background-color: rgba(0,0,0,0);
+	border-image: url(]]..getMudletHomeDir()..[[/]]..arm.packageName..[[/assets/sword.png);
+]])
+
+weightLabelPicture = Geyser.Label:new({
+	name = "weightLabelPicture",
+	x = "53%", y = "3",
+	width = "30px", height = "30px",
+}, statBar)
+setStyleWithSlash(weightLabelPicture, [[
+	background-color: rgba(0,0,0,0);
+	border-image: url(]]..getMudletHomeDir()..[[/]]..arm.packageName..[[/assets/chest.png);
+]])
+
+timeLabelPicture = Geyser.Label:new({
+	name = "timeLabelPicture",
+	x = "53%", y = "32",
+	width = "25px", height = "25px",
+}, statBar)
+setStyleWithSlash(timeLabelPicture, [[
+	background-color: rgba(0,0,0,0);
+	border-image: url(]]..getMudletHomeDir()..[[/]]..arm.packageName..[[/assets/time.png);
+]])
+
+nameLabel = Geyser.Label:new({
+	name = "nameLabel",
+	x = "3",
+	y = "-125",
+	width = "160",
+	height = "40",
+	message = [[&lt;center&gt;Armageddon&lt;/center&gt;]]
+}, bottomBar)
+
+setName = function(name)
+	return nameLabel:echo(name)
+end
+
+setStyleWithSlash(nameLabel, [[
+	font-family: 'Fondamento', serif;
+	qproperty-alignment: 'AlignCenter';
+	border-image: url(]]..getMudletHomeDir()..[[/]]..arm.packageName..[[/assets/button_pressed.png);
+]])
+
+moodBorder = Geyser.Label:new({
+	name = "moodBorder",
+	x	= "160",
+	y = "-130",
+	width = "205",
+	height = "30",
+}, bottomBorder)
+
+moodBorder:setStyleSheet([[
+	background-color: rgba(0,0,0,0);
+]])
+
+moodLabel = Geyser.Label:new({
+	name = "moodLabel",
+	x = "2",
+	y = "2",
+	width = "-2",
+	height = "-3",
+	message = [[&lt;center&gt;Mood&lt;/center&gt;]]
+}, moodBorder)
+
+setMood = function(mood)
+	return moodLabel:echo(mood)
+end
+
+setStyleWithSlash(moodLabel, [[
+	font-family: 'Fondamento', serif;
+	qproperty-alignment: 'AlignCenter';
+	background-image: url(]]..getMudletHomeDir()..[[/]]..arm.packageName..[[/assets/border.jpg);
+]])
+
+moodBorderLeft = Geyser.Label:new({
+	name = "moodBorderLeft",
+	x	= "0",
+	y = "0",
+	width = "10",
+	height = "100%",
+}, moodBorder)
+
+setStyleWithSlash(moodBorderLeft, [[
+	border-image: url(]]..getMudletHomeDir()..[[/]]..arm.packageName..[[/assets/leftmoodborder.png);
+]])
+
+moodBorderRight = Geyser.Label:new({
+	name = "moodBorderRight",
+	x	= "-10",
+	y = "0",
+	width = "10",
+	height = "100%",
+}, moodBorder)
+
+setStyleWithSlash(moodBorderRight, [[
+	border-image: url(]]..getMudletHomeDir()..[[/]]..arm.packageName..[[/assets/rightmoodborder.png);
+]])
+
+moodBorderTopBottom = Geyser.Label:new({
+	name = "moodBorderTopBottom",
+	x	= "10",
+	y = "0",
+	width = "-10",
+	height = "100%",
+}, moodBorder)
+
+setStyleWithSlash(moodBorderTopBottom, [[
+	border-image: url(]]..getMudletHomeDir()..[[/]]..arm.packageName..[[/assets/moodborder.png);
+]])
+
+local function printToScreen(str)
+	cecho("&lt;green&gt;" .. arm.packageName .. ": " .. str)
+	echo("\n")
+end
+
+function arm.checkVersion()
+	if arm.downloadPath ~= "" then
+		local path, file = profilePath .. "/downloads", "/arm_versions.lua"
+    if not io.exists(path) then lfs.mkdir(path) end
+		downloading = true
+		downloadFile(path .. file, arm.downloadPath .. file)
+		printToScreen("Checking for updates in " .. arm.downloadPath .. " ...")
+	end
+end
+
+function downloaded_checkVersion()
+	if not downloading then return end
+	downloading = false
+	local path = profilePath .. "/downloads/arm_versions.lua"
+	local versions = {}
+	table.load(path, versions)
+	local pos = table.index_of(versions, arm.version) or 0
+	if pos ~= #versions then
+		enableAlias("updatearm")
+		printToScreen("Your package is currently &lt;red&gt;"..#versions - pos.." versions&lt;green&gt; behind.")
+		printToScreen("To update now, type: &lt;yellow&gt;updatearm&lt;reset&gt;")
+	end
+end
+
+function arm.updateVersion()
+	local path, file = profilePath .. "/downloads", "/" .. arm.packageName .. ".zip"
+	downloading = true
+	downloadFile(path .. file, arm.downloadPath .. file)
+	printToScreen("Downloading update...")
+end
+
+function downloaded_updateVersion(filename)
+	if not downloading then return end
+	downloading = false
+	local path = profilePath .. "/downloads/" .. arm.packageName .. ".zip"
+	uninstallPackage(arm.packageName)
+	installPackage(path)
+
+	registerAnonymousEventHandler(
+		"sysInstall",
+		function(_, name)
+			if name ~= arm.packageName then
+				return true
+			end
+			printToScreen("Package updated successfully.")
+			disableAlias("updatearm")
+		end,
+		true
+	)
+end
+
+function arm.eventHandler(event, ...)
+	if event == "sysDownloadDone" and downloading then
+    local file = arg[1]
+    if string.ends(file,"/arm_versions.lua") then
+        downloaded_checkVersion()
+    elseif string.ends(file, "/" .. arm.packageName .. ".zip") then
+        downloaded_updateVersion(arg[1])
+    end
+	elseif event == "sysDownloadError" and downloading then
+		downloading = false
+		printToScreen("&lt;red&gt;Download failed!&lt;green&gt; " .. arg[1])
+	elseif event == "sysConnectionEvent" then
+		arm.checkVersion()
+	end
+end
+
+registerAnonymousEventHandler("sysDownloadDone", "arm.eventHandler")
+registerAnonymousEventHandler("sysDownloadDone", "arm.eventHandler")
+registerAnonymousEventHandler("sysDownloadError", "arm.eventHandler")
+registerAnonymousEventHandler("sysConnectionEvent", "arm.eventHandler")</script>
+			<eventHandlerList />
+		</Script>
+	</ScriptPackage>
+	<KeyPackage />
+	<VariablePackage>
+		<HiddenVariables />
+	</VariablePackage>
+</MudletPackage>
