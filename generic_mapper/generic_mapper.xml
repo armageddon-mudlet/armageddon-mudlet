@@ -764,10 +764,23 @@ end</script>
 				<regex></regex>
 				<Alias isActive="yes" isFolder="no">
 					<name>Save Map Alias</name>
-					<script>saveMap(getMudletHomeDir() .. "/map.dat")</script>
+					<script>
+saveMap(getMudletHomeDir() .. "/map.dat")
+echo("Map saved to " .. getMudletHomeDir() .. "/map.dat")
+</script>
 					<command></command>
 					<packageName></packageName>
 					<regex>^map save$</regex>
+				</Alias>
+				<Alias isActive="yes" isFolder="no">
+					<name>Restore Map Alias</name>
+					<script>
+loadMap(getMudletHomeDir() .. "/map.dat")
+echo("Map restored from " .. getMudletHomeDir() .. "/map.dat")
+                    </script>
+					<command></command>
+					<packageName></packageName>
+					<regex>^map restore$</regex>
 				</Alias>
 				<Alias isActive="yes" isFolder="no">
 					<name>Load Map Alias</name>
