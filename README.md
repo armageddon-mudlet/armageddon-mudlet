@@ -2,12 +2,11 @@
 
 # Table of Contents
 
-1. [Important Note](#important note)
-2. [Installation](#installation)
-3. [Setup](#setup)
-4. [Mapping](#mapping)
+1. [Installation](#installation)
+2. [Setup](#setup)
+3. [Mapping](#mapping)
 
-# Important note
+# Important Note
 Unfortunately, Armageddon has been closed indefinitely. As such, this software is now being used for Apocalypse, as many of its systems are similar.
 
 # Installation
