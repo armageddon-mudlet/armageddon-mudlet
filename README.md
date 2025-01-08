@@ -2,9 +2,13 @@
 
 # Table of Contents
 
-1. [Installation](#installation)
-2. [Setup](#setup)
-3. [Mapping](#mapping)
+1. [Important Note](#important note)
+2. [Installation](#installation)
+3. [Setup](#setup)
+4. [Mapping](#mapping)
+
+# Important note
+Unfortunately, Armageddon has been closed indefinitely. As such, this software is now being used for Apocalypse, as many of its systems are similar.
 
 # Installation
 
@@ -33,7 +37,7 @@ Alternatively, download the .zip file(s) of the packages you'd prefer:
  - [arm_prompt.zip](https://github.com/armageddon-mudlet/armageddon-mudlet/raw/master/arm_prompt/arm_prompt.zip)
  - [arm_gui.zip (with sidebar)](https://github.com/armageddon-mudlet/armageddon-mudlet/raw/master/arm_gui/arm_gui.zip)
  - [generic_mapper.zip](https://github.com/armageddon-mudlet/armageddon-mudlet/raw/master/generic_mapper/generic_mapper.zip)
- 
+
 Open Mudlet and navigate to the Package Manager (this is also found under Toolbox > Package manager). Press *Install* and select the downloaded .zip file.
 
 # Setup
